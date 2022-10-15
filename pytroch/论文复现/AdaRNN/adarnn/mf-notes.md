@@ -1,0 +1,181 @@
+# 《AdaRNN:Adaptive Learning and Forecasting of Time Series》——时间序列预测新范式：基于迁移学习的AdaRNN方法
+
+[论文pdf](https://arxiv.org/abs/2108.04443)|[B站视频](https://www.bilibili.com/video/BV1Gh411B7rj/?vd_source=3aa88642179030efe4ce362bda4fea11)|[知乎文章](https://zhuanlan.zhihu.com/p/398036372)
+
+![image-20221015151553888](notes.assets/image-20221015151553888.png)
+
+## 背景
+
+- 时间序列是一种重要的具有广泛应用的数据类型
+  - 股票预测
+  - 健康状态控制
+  - 天气预报
+  - 价格管理
+  - 能源消耗
+
+准确的时间序列预测依旧是一个具有挑战且没有被完全解决的问题。
+
+![image-20221015152153684](notes.assets/image-20221015152153684.png)
+
+### 已经存在的时间序列方法
+
+1. 马尔科夫假设
+   - 每一个观测值只和前一个时刻的状态有关，而与其他无关
+   - HMM-隐马尔科夫模型
+   - Dynamic Bayesian network - 动态贝叶斯网络
+   - Kalman filter - 卡尔曼滤波
+   - RIMA. ARIMA(自回归移动平均模型，Autoregressive integrated Moving Average Model)... - 统计学家常用 
+2. RNN(循环神经网络。Recurrent Neural Networks)
+   - 能够发现长时间序列数据中的非线性和复杂的依赖关系 - can find highly non-linear and complex relationships in long-time periods
+   - RNN/LSTM/GRU
+   - Conv-LSTM...
+3. Transformers
+   - 一种seq2seq的模型，可以并行建模（Parallel modeling）， 可以捕获更长时的数据依赖。
+   - Transformers
+
+![image-20221015152254704](notes.assets/image-20221015152254704.png)
+
+### 动机-Motivation
+
+- 非平稳时间序列
+  - 时间序列的统计特征是跟随时间不断变化的
+
+数据虽然在整体上是动态的波动，但是在局部看来是一个固定的分布。即由若干个未知的单一分布复合合成的。 时间序列中存在一种内部的分布不一致性，在某一段小的区间里面这个分布是趋向一致的。这个问题之前是没有人研究的，我们将这个问题定义时序协方差漂移或时序变量漂移(Temporal Covariate Shift)。一个时间序列可以分成很多段，段内的分布是一致的，段之间分布不一样。
+
+![image-20221015180546691](notes.assets/image-20221015180546691.png)
+
+### 问题定义- Preblem formulation
+
+![image-20221015180714652](notes.assets/image-20221015180714652.png)
+
+### **时序分布漂移** - Temporal Covariate Shift(TCS)
+
+在原始变量漂移(Covariate Shift)定义的基础上定义了**时序分布漂移**(Temporal Covariate Shift)
+
+![image-20221015181241053](notes.assets/image-20221015181241053.png)
+
+## 如何解决TCS的问题 - How to solve TCS?
+
+- 找出最不一样的分布区间方案
+- 匹配最大分布时的谷
+- 得到好的模型
+
+![image-20221015181330846](notes.assets/image-20221015181330846.png)
+
+### 我的方法 - Our approach
+
+- AdaRNN：Adaptive RNNs
+  - 时间分布特征刻画
+  - 时间分布特征匹配
+
+![image-20221015181950711](notes.assets/image-20221015181950711.png)
+
+### ***时序相似性量化\*** - Temporal Distribution Characterization
+
+- TDC
+  - 找到K最不相关的部分
+  - 如何来定义相似性呢？—— 分布距离$D$
+  - 为什么是最不相似的部分？—— 多样性的分布可以帮助模型的泛化
+  - 对分布做一个类似与聚类的操作。
+
+这个问题是可以转化为一个动态规划的问题， 但是我们使用了贪心算法来更高效的求解这个问题。
+
+![image-20221015182559878](notes.assets/image-20221015182559878.png)
+
+### 时序分布匹配 - Temporal Distribution Matching
+
+-   常规方法
+
+  - 领域泛化(domain generalization)问题 - K 领域
+  - 该方法忽略了RNN中的隐藏表示分布
+
+- TDM
+
+  - 我们的方法：一种可适应的权重矩阵来表示每一个隐藏状态。
+
+  ![image-20221015183238989](notes.assets/image-20221015183238989.png)
+
+- 如何去学习权重矩阵呢？
+  - 常规的方法是加一个注意力机制(attention)，但是会因以下原因而失效：
+    - 在初始阶段，通过固定$\theta$和$\alpha$中的一个来表示隐藏层的状态是没有意义的，都会导致对权重不充分的学习。
+    - 网络会因为非常复杂和耗时，而很容易卡住
+  - 我们的解决方式
+    - 提出了一个方法(boosting-based importance evaluation)
+
+![image-20221015184247729](notes.assets/image-20221015184247729.png)
+
+![image-20221015202320936](notes.assets/image-20221015202320936.png)
+
+## 实验
+
+- 数据集：行为数据集-分类(UCI activity)、空气质量预测(Air quality)、电力消耗(Electric power)、股票价格-私有(Stock price)
+- 基线
+  - 传统方法：ARIMA、GRU、LightGBM
+  - 已存在的DA/DG方法：MMD、DANN（没有对TS特别有效的方法，所以我们扩展了他们）
+  -  Transformer
+  - Latest TS methods: LSTNet(SIGIR-18), STRIPE(NeurIPS-20)
+  - 基础网络：2层GRU
+
+![image-20221015204115578](notes.assets/image-20221015204115578.png)
+
+## 结果
+
+![image-20221015204142111](notes.assets/image-20221015204142111.png)
+
+![image-20221015204216936](notes.assets/image-20221015204216936.png)
+
+## 分析
+
+- 时间分布特征刻画
+  - 分区的不同反映了不同的分布信息
+
+- 我们的TDC算法给出了最好的分区结果
+  - 比随机和翻转（翻转这里还不是很理解）更好。
+
+![image-20221015204501424](notes.assets/image-20221015204501424.png)
+
+- 时间分布特征匹配
+  - 学习权重$\alpha$是有效的
+  - 我们的boosting方法获得了最佳的结果
+  - 在不同分布特征匹配距离时，TDM是不可知的(agnostic)
+
+![image-20221015204936976](notes.assets/image-20221015204936976.png)
+
+### 更细致的分析 - More detailed analysis
+
+- 分布距离
+  - 我们的方法给出了最小的距离
+- 多步预测
+  - 我们的方法给出了最好的多步预测结果
+
+![image-20221015205348881](notes.assets/image-20221015205348881.png)
+
+### 收敛性和训练时间
+
+- 收敛性 - Convergence
+  - 我们的方法可以在很少的迭代次数下收敛
+- 训练时间
+  - 我们的方法不会产生更大的计算负担，而且甚至比SOTA模型更高效 
+
+![image-20221015205945985](notes.assets/image-20221015205945985.png)
+
+### 个案研究 - Case study
+
+![image-20221015210122955](notes.assets/image-20221015210122955.png)
+
+### 更进一步：扩展到Transformer
+
+![image-20221015210147205](notes.assets/image-20221015210147205.png)
+
+## 总结
+
+三个创新点
+
+- 全新的问题
+  - 我们首次发现并提出了时间序列数据中时间变量偏移的问题
+- 新颖的方法
+  - 为了解决时间变量偏移的问题，我们提出了AdaRNN的方法来学习时间不变性(temporally-invariant)的模型来确保好的泛化能力
+- 良好的表现
+  - 在多个数据集上的实验证明有效。
+
+![image-20221015222951449](notes.assets/image-20221015222951449.png)
