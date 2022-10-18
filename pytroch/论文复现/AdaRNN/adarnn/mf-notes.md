@@ -50,7 +50,11 @@
 
 ### **时序分布漂移** - Temporal Covariate Shift(TCS)
 
-在原始变量漂移(Covariate Shift)定义的基础上定义了**时序分布漂移**(Temporal Covariate Shift)
+在原始变量漂移(Covariate Shift)定义的基础上定义了**时序分布漂移**(Temporal Covariate Shift)，其中变量偏移(Covariate Shift)属于数据集偏移(Dataset shift)中的一个分类。
+
+[数据集偏移](https://zhuanlan.zhihu.com/p/205183444)(Dataset shift)的概念是指，在一般的机器学习项目中，我们将采集到的真实场景的数据分成训练集和测试集（或验证集），并假设训练集和测试集符合独立同分布，这样保证了训练集上表现良好的模型同样适用于测试集（即真实场景）。**但是**，当某些原因导致训练集和测试集分布不同时，便会发生dataset shift (or drifing)。
+
+数据集偏移类型一般可分为三种：(1)协变量偏移（Covariate shift）(2)先验概率偏移（Prior probability shift）(3)概念偏移。具体解释这里先不赘述。
 
 ![image-20221015181241053](notes.assets/image-20221015181241053.png)
 
@@ -65,8 +69,8 @@
 ### 我的方法 - Our approach
 
 - AdaRNN：Adaptive RNNs
-  - 时间分布特征刻画
-  - 时间分布特征匹配
+  - 时序相似性量化：时间分布特征刻画
+  - 时序分布匹配：时间分布特征匹配
 
 ![image-20221015181950711](notes.assets/image-20221015181950711.png)
 
@@ -179,3 +183,44 @@
   - 在多个数据集上的实验证明有效。
 
 ![image-20221015222951449](notes.assets/image-20221015222951449.png)
+
+# 论文复现-mf
+
+参数表
+
+| 参数名称     | 参数含义                                           |
+| ------------ | -------------------------------------------------- |
+| batch_size   |                                                    |
+| class_num    |                                                    |
+| d_feat       |                                                    |
+| data_mode    |                                                    |
+| data_path    |                                                    |
+| dropout      |                                                    |
+| **dw**       |                                                    |
+| early_stop   |                                                    |
+| gpu_id       |                                                    |
+| hidden_size  |                                                    |
+| len_seq      |                                                    |
+| len_win      |                                                    |
+| log_file     | 运行日志                                           |
+| loss_type    |                                                    |
+| lr           | 学习率                                             |
+| model_name   | 模型名称，可选“AdaRNN”和“Boosting”，默认值为AdaRNN |
+| n_epochs     |                                                    |
+| num_domain   |                                                    |
+| num_layers   | 层的数量                                           |
+| outdir       |                                                    |
+| overwrite    |                                                    |
+| pre_epoch    |                                                    |
+| seed         |                                                    |
+| smooth_steps |                                                    |
+| station      |                                                    |
+
+其他参数
+
+| 参数名   | 参数含义 |
+| -------- | -------- |
+| dis_type |          |
+|          |          |
+|          |          |
+

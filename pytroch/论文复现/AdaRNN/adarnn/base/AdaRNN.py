@@ -66,7 +66,7 @@ class AdaRNN(nn.Module):
             self.softmax = torch.nn.Softmax(dim=0)
             self.init_layers()
 
-    def init_layers(self):
+    def init_layers(self):  # mf-感觉没必要单独弄出来一个函数
         for i in range(len(self.hiddens)):
             self.gate[i].weight.data.normal_(0, 0.05)
             self.gate[i].bias.data.fill_(0.0)

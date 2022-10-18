@@ -29,7 +29,9 @@ def pprint(*text):
 
 def get_model(name='AdaRNN'):
     n_hiddens = [args.hidden_size for i in range(args.num_layers)]
-    return AdaRNN(use_bottleneck=True, bottleneck_width=64, n_input=args.d_feat, n_hiddens=n_hiddens,  n_output=args.class_num, dropout=args.dropout, model_type=name, len_seq=args.len_seq, trans_loss=args.loss_type).cuda()
+    return AdaRNN(use_bottleneck=True, bottleneck_width=64, n_input=args.d_feat, n_hiddens=n_hiddens,
+                  n_output=args.class_num, dropout=args.dropout, model_type=name, len_seq=args.len_seq,
+                  trans_loss=args.loss_type).cuda()
 
 
 def train_AdaRNN(args, model, optimizer, train_loader_list, epoch, dist_old=None, weight_mat=None):
@@ -40,10 +42,10 @@ def train_AdaRNN(args, model, optimizer, train_loader_list, epoch, dist_old=None
     loss_1_all = []
     dist_mat = torch.zeros(args.num_layers, args.len_seq).cuda()
     len_loader = np.inf
-    for loader in train_loader_list:
+    for loader in train_loader_list:  # mf-取小的长度？
         if len(loader) < len_loader:
             len_loader = len(loader)
-    for data_all in tqdm(zip(*train_loader_list), total=len_loader):
+    for data_all in tqdm(zip(*train_loader_list), total=len_loader):  # mf-tqdm-进度条的第三方库
         optimizer.zero_grad()
         list_feat = []
         list_label = []
@@ -341,15 +343,15 @@ def main_transfer(args):
     output_path = args.outdir + '_' + args.station + '_' + args.model_name + '_weather_' + \
         args.loss_type + '_' + str(args.pre_epoch) + \
         '_' + str(args.dw) + '_' + str(args.lr)
-    save_model_name = args.model_name + '_' + args.loss_type + \
+    save_model_path = args.model_name + '_' + args.loss_type + \
         '_' + str(args.dw) + '_' + str(args.lr) + '.pkl'
     utils.dir_exist(output_path)
-    pprint('create loaders...')
 
+    pprint('create loaders...')
     train_loader_list, valid_loader, test_loader = data_process.load_weather_data_multi_domain(
         args.data_path, args.batch_size, args.station, args.num_domain, args.data_mode)
 
-    args.log_file = os.path.join(output_path, 'run.log')
+    args.log_file = os.path.join(output_path, 'run.log')  #
     pprint('create model...')
     model = get_model(args.model_name)
     num_model = count_parameters(model)
@@ -391,7 +393,7 @@ def main_transfer(args):
             stop_round = 0
             best_epoch = epoch
             torch.save(model.state_dict(), os.path.join(
-                output_path, save_model_name))
+                output_path, save_model_path))
         else:
             stop_round += 1
             if stop_round >= args.early_stop:
@@ -402,7 +404,7 @@ def main_transfer(args):
 
     loaders = train_loader_list[0], valid_loader, test_loader
     loss_list, loss_l1_list, loss_r_list = inference_all(output_path, model, os.path.join(
-        output_path, save_model_name), loaders)
+        output_path, save_model_path), loaders)
     pprint('MSE: train %.6f, valid %.6f, test %.6f' %
            (loss_list[0], loss_list[1], loss_list[2]))
     pprint('L1:  train %.6f, valid %.6f, test %.6f' %
@@ -442,7 +444,7 @@ def get_args():
 
     # other
     parser.add_argument('--seed', type=int, default=10)
-    parser.add_argument('--data_path', default="/root/Messi_du/adarnn/")
+    parser.add_argument('--data_path', default="./data/")
     parser.add_argument('--outdir', default='./outputs')
     parser.add_argument('--overwrite', action='store_true')
     parser.add_argument('--log_file', type=str, default='run.log')

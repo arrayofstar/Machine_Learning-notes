@@ -59,11 +59,11 @@ def TDC(num_domain, data_file, station, dis_type = 'coral'):
             '2016-06-30 23:00:00', '%Y-%m-%d %H:%M:%S')
     num_day = (end_time - start_time).days
     split_N = 10
-    data=pd.read_pickle(data_file)[station]
-    feat =data[0][0:num_day]
-    feat=torch.tensor(feat, dtype=torch.float32)
+    data = pd.read_pickle(data_file)[station]
+    feat = data[0][0:num_day]
+    feat = torch.tensor(feat, dtype=torch.float32)
     feat_shape_1 = feat.shape[1] 
-    feat =feat.reshape(-1, feat.shape[2])
+    feat = feat.reshape(-1, feat.shape[2])
     feat = feat.cuda()
     # num_day_new = feat.shape[0]
 
