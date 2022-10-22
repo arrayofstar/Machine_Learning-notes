@@ -190,7 +190,7 @@
 
 | 参数名称     | 参数含义                                           |
 | ------------ | -------------------------------------------------- |
-| batch_size   |                                                    |
+| batch_size   | 默认值36                                           |
 | class_num    |                                                    |
 | d_feat       |                                                    |
 | data_mode    |                                                    |
@@ -204,7 +204,7 @@
 | len_win      |                                                    |
 | log_file     | 运行日志                                           |
 | loss_type    |                                                    |
-| lr           | 学习率                                             |
+| lr           | 学习率，默认值为0.0005                             |
 | model_name   | 模型名称，可选“AdaRNN”和“Boosting”，默认值为AdaRNN |
 | n_epochs     |                                                    |
 | num_domain   |                                                    |
@@ -218,9 +218,61 @@
 
 其他参数
 
-| 参数名   | 参数含义 |
-| -------- | -------- |
-| dis_type |          |
-|          |          |
-|          |          |
+| 函数名          | 参数名           | 参数含义                                                     |
+| --------------- | ---------------- | ------------------------------------------------------------ |
+|                 | dis_type         |                                                              |
+| AdaRNN.__init__ | use_bottleneck   | 默认值为True                                                 |
+|                 | bottleneck_width | 默认值为64                                                   |
+| AdaRNN.__init__ | n_input          | 默认值为6                                                    |
+| AdaRNN.__init__ | num_layers       | 默认值为2                                                    |
+| AdaRNN.__init__ | hiddens          | GRU中的隐藏层长度，因为有两层GRU，默认值为[64, 64]           |
+| AdaRNN.__init__ | n_output         | 默认值为1                                                    |
+| AdaRNN.__init__ | model_type       | 默认值为'AdaRNN'                                             |
+| AdaRNN.__init__ | trans_loss       | 默认值为'adv'                                                |
+| AdaRNN.__init__ | len_seq          | 默认值为24                                                   |
+|                 | in_size          | GRU层中输入长度，默认值为6                                   |
+| train_AdaRNN    | dist_mat         | 默认值为None                                                 |
+|                 | weight_mat       | 默认值为None                                                 |
+| TDC             | start_time       | 2013-03-01                                                   |
+|                 | end_time         | 2016-06-30                                                   |
+|                 | split_N          | 10                                                           |
+|                 | selected         | [0, 10]                                                      |
+|                 | candidate        | [1, 2, 3, 4, 5, 6, 7, 8, 9]                                  |
+|                 | dis_type         | 默认为coral，支持的有mmd(mmd_lin), mmd_rbf, coral, cosine, kl, js, mine, adv |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+|                 |                  |                                                              |
+
+# 论文复现笔记
+
+## 数据集定义与加载
+
+论文中所使用的数据集为[Beijing Multi-Site Air-Quality Data Data Set](https://archive.ics.uci.edu/ml/datasets/Beijing+Multi-Site+Air-Quality+Data) 。数据集中包含了从2013年3月到2017年2月北京12个站点收集到的每小时空气质量信息。作者随机选择了四个站点（Dongsi, Tiantan, Nongzhanguan, and Dingling）和六个特征（PM2.5, PM10, SO2, NO2, CO, and O3）。因为原始数据中包含一些缺失值，因此使用了平均值进行替换。随后，还对数据集进行好标准化处理，将所有的特征扩展到相同的范围。作者还提供的处理之后数据的对应链接： [dataset link](https://box.nju.edu.cn/f/2239259e06dd4f4cbf64/?dl=1) or [百度云](https://pan.baidu.com/s/1xkLyd9YPgK7h8B1-acCImg) (密码：1007) 
+
+备注：数据集文件为.pkl格式，包含了三个部分，'features', 'label', 'label_reg'. 'label'为空气质量的分类标签(如. excellence, good, middle)，在文中没有使用。 'lable_reg' 为预测的值。
+
+在实际数据读取中，训练集使用TDC算法按用户指定的`number_domain`进行划分。时间段上，
+
+- 训练集：2013-3-1 00:00 —— 2016-6-30 23:00
+- 验证集：2016-7-2 00:00 —— 2016-10-30 23:00
+- 测试集：2016-11-2 00:00 —— 2017-2-18 23:00
+
+## 模型组网
 

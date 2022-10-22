@@ -114,7 +114,7 @@ def load_weather_data_multi_domain(file_path, batch_size=6, station='Changping',
     # mode: 'tdc', 'pre_process'
     data_file = os.path.join(file_path, "PRSA_Data_1.pkl")
     mean_train, std_train = data_weather.get_weather_data_statistic(data_file, station=station, start_time='2013-3-1 0:0',
-                                                                    end_time='2016-10-30 23:0')
+                                                                    end_time='2016-10-30 23:0')  # mf-从训练集和验证集一起来获取均值和方差
     split_time_list = get_split_time(number_domain, mode=mode, data_file =data_file,station=station, dis_type = dis_type)
     train_list = []
     for i in range(len(split_time_list)):

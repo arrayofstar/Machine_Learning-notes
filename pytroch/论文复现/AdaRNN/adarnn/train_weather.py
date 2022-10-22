@@ -88,12 +88,13 @@ def train_AdaRNN(args, model, optimizer, train_loader_list, epoch, dist_old=None
             loss_l1 = criterion_1(pred_s, label_reg_s)
 
             total_loss = total_loss + loss_s + loss_t + args.dw * loss_transfer
+
         loss_all.append(
             [total_loss.item(), (loss_s + loss_t).item(), loss_transfer.item()])
         loss_1_all.append(loss_l1.item())
         optimizer.zero_grad()
         total_loss.backward()
-        torch.nn.utils.clip_grad_value_(model.parameters(), 3.)
+        torch.nn.utils.clip_grad_value_(model.parameters(), 3.)  # 固定阈值剪裁 - 控制梯度范围在[-3,3]
         optimizer.step()
     loss = np.array(loss_all).mean(axis=0)
     loss_l1 = np.array(loss_1_all).mean()
@@ -439,7 +440,7 @@ def get_args():
     parser.add_argument('--station', type=str, default='Dongsi')
     parser.add_argument('--data_mode', type=str,
                         default='tdc')
-    parser.add_argument('--num_domain', type=int, default=2)
+    parser.add_argument('--num_domain', type=int, default=3) # 之前的默认值为2
     parser.add_argument('--len_seq', type=int, default=24)
 
     # other

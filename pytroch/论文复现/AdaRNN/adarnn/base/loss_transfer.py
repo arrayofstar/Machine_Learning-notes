@@ -46,9 +46,9 @@ class TransferLoss(object):
 
         return loss
 
-if __name__ == "__main__":
-    import torch
-    trans_loss = TransferLoss('adv')
-    a = (torch.randn(5,512) * 10).cuda()
-    b = (torch.randn(5,512) * 10).cuda()
-    print(trans_loss.compute(a, b))
+# if __name__ == "__main__":
+#     import torch
+#     trans_loss = TransferLoss('adv')
+#     a = (torch.randn(5,512) * 10).cuda()
+#     b = (torch.randn(5,512) * 10).cuda()
+#     print(trans_loss.compute(a, b))

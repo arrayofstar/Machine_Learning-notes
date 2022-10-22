@@ -9,7 +9,7 @@ class AdaRNN(nn.Module):
     model_type:  'Boosting', 'AdaRNN'
     """
 
-    def __init__(self, use_bottleneck=False, bottleneck_width=256, n_input=128, n_hiddens=[64, 64], n_output=6, dropout=0.0, len_seq=9, model_type='AdaRNN', trans_loss='mmd'):
+    def __init__(self, use_bottleneck=False, bottleneck_width=256, n_input=6, n_hiddens=[64, 64], n_output=6, dropout=0.0, len_seq=24, model_type='AdaRNN', trans_loss='adv'):
         super(AdaRNN, self).__init__()
         self.use_bottleneck = use_bottleneck
         self.n_input = n_input
@@ -31,7 +31,7 @@ class AdaRNN(nn.Module):
                 dropout=dropout
             )
             features.append(rnn)
-            in_size = hidden
+            in_size = hidden  # mf-这里的赋值后面可能没有用过
         self.features = nn.Sequential(*features)
 
         if use_bottleneck == True:  # finance
@@ -120,7 +120,7 @@ class AdaRNN(nn.Module):
         weight = torch.sigmoid(self.bn_lst[index](
             self.gate[index](x_all.float())))
         weight = torch.mean(weight, dim=0)
-        res = self.softmax(weight).squeeze()
+        res = self.softmax(weight).squeeze()  # mf-这里的squeeze好像目前没意义
         return res
 
     def get_features(self, output_list):
