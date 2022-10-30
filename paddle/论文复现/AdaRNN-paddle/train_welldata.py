@@ -36,11 +36,13 @@ def pprint(*text):
 def get_args():
 
     parser = argparse.ArgumentParser()
+    # dataset parameters
+    parser.add_argument('--model_name', default='AdaRNN')
+
 
     # model parameters
     parser.add_argument('--model_name', default='AdaRNN')
     parser.add_argument('--d_feat', type=int, default=6)
-
     parser.add_argument('--hidden_size', type=int, default=64)
     parser.add_argument('--num_layers', type=int, default=2)
     parser.add_argument('--dropout', type=float, default=0.0)
@@ -241,7 +243,7 @@ if __name__ == '__main__':
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
     os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu_id)
-    output_path = args.outdir + '_' + args.station + '_' + args.model_name + '_weather_' + \
+    output_path = args.outdir + '_' + args.station + '_' + args.model_name + '_welldata_' + \
                   args.loss_type + '_' + str(args.pre_epoch) + \
                   '_' + str(args.dw) + '_' + str(args.lr)
     utils.dir_exist(output_path)

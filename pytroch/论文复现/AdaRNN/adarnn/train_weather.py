@@ -438,8 +438,7 @@ def get_args():
     parser.add_argument('--dw', type=float, default=0.5) # 0.01, 0.05, 5.0
     parser.add_argument('--loss_type', type=str, default='adv')
     parser.add_argument('--station', type=str, default='Dongsi')
-    parser.add_argument('--data_mode', type=str,
-                        default='tdc')
+    parser.add_argument('--data_mode', type=str, default='tdc')
     parser.add_argument('--num_domain', type=int, default=3) # 之前的默认值为2
     parser.add_argument('--len_seq', type=int, default=24)
 

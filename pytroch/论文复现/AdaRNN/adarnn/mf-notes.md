@@ -186,35 +186,33 @@
 
 # 论文复现-mf
 
-参数表
-
-| 参数名称     | 参数含义                                           |
-| ------------ | -------------------------------------------------- |
-| batch_size   | 默认值36                                           |
-| class_num    |                                                    |
-| d_feat       |                                                    |
-| data_mode    |                                                    |
-| data_path    |                                                    |
-| dropout      |                                                    |
-| **dw**       |                                                    |
-| early_stop   |                                                    |
-| gpu_id       |                                                    |
-| hidden_size  |                                                    |
-| len_seq      |                                                    |
-| len_win      |                                                    |
-| log_file     | 运行日志                                           |
-| loss_type    |                                                    |
-| lr           | 学习率，默认值为0.0005                             |
-| model_name   | 模型名称，可选“AdaRNN”和“Boosting”，默认值为AdaRNN |
-| n_epochs     |                                                    |
-| num_domain   |                                                    |
-| num_layers   | 层的数量                                           |
-| outdir       |                                                    |
-| overwrite    |                                                    |
-| pre_epoch    |                                                    |
-| seed         |                                                    |
-| smooth_steps |                                                    |
-| station      |                                                    |
+| 参数名称     | 参数含义                                                     |
+| ------------ | ------------------------------------------------------------ |
+| batch_size   | 默认值36                                                     |
+| class_num    | 输出预测序列的长度，默认为1                                  |
+| d_feat       | 输入特征的量，默认为6                                        |
+| data_mode    | 时间相似性量化的模式，可选 pre_process 和 tdc，分别为人为指定时间序列节点和TDC算法计算分布距离最大节点。 |
+| data_path    | 数据文件存放路径，默认为./data/                              |
+| dropout      | 模型-GRU模块中dropout参数                                    |
+| **dw**       |                                                              |
+| early_stop   |                                                              |
+| gpu_id       |                                                              |
+| hidden_size  |                                                              |
+| len_seq      |                                                              |
+| len_win      |                                                              |
+| log_file     | 运行日志                                                     |
+| loss_type    | 判断分布距离的函数类型，默认值为adv                          |
+| lr           | 学习率，默认值为0.0005                                       |
+| model_name   | 模型名称，可选“AdaRNN”和“Boosting”，默认值为AdaRNN           |
+| n_epochs     |                                                              |
+| num_domain   |                                                              |
+| num_layers   | 层的数量                                                     |
+| outdir       |                                                              |
+| overwrite    |                                                              |
+| pre_epoch    |                                                              |
+| seed         |                                                              |
+| smooth_steps |                                                              |
+| station      |                                                              |
 
 其他参数
 
@@ -242,23 +240,7 @@
 |                 |                  |                                                              |
 |                 |                  |                                                              |
 |                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
-|                 |                  |                                                              |
+
 
 # 论文复现笔记
 
