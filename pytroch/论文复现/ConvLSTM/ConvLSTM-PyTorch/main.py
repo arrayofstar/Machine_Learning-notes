@@ -30,7 +30,7 @@ import argparse
 TIMESTAMP = "2020-03-09T00-00-00"
 parser = argparse.ArgumentParser()
 parser.add_argument('-clstm',
-                    '--convlstm',default=True,
+                    '--convlstm',
                     help='use convlstm as base cell',
                     action='store_true')
 parser.add_argument('-cgru',

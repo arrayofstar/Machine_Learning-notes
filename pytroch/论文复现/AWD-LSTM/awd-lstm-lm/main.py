@@ -48,8 +48,8 @@ parser.add_argument('--cuda', action='store_false',
                     help='use CUDA')
 parser.add_argument('--log-interval', type=int, default=200, metavar='N',
                     help='report interval')
-randomhash = ''.join(str(time.time()).split('.'))
-randomhash = 'test'
+# randomhash = ''.join(str(time.time()).split('.'))
+randomhash = 'model_para_1205'
 parser.add_argument('--save', type=str,  default=randomhash+'.pt',
                     help='path to save the final model')
 parser.add_argument('--alpha', type=float, default=2,
@@ -58,7 +58,7 @@ parser.add_argument('--beta', type=float, default=1,
                     help='beta slowness regularization applied on RNN activiation (beta = 0 means no regularization)')
 parser.add_argument('--wdecay', type=float, default=1.2e-6,
                     help='weight decay applied to all weights')
-parser.add_argument('--resume', type=str,  default='',
+parser.add_argument('--resume', type=str,  default='model_para_new.pt',
                     help='path of model to resume')
 parser.add_argument('--optimizer', type=str,  default='sgd',
                     help='optimizer to use (sgd, adam)')
@@ -81,9 +81,10 @@ if torch.cuda.is_available():
 ###############################################################################
 
 def model_save(fn):
-    with open(fn, 'wb') as f:
-        torch.save([model, criterion, optimizer], f)
-
+    # with open(fn, 'wb') as f:
+    #     torch.save([model, criterion, optimizer], f)
+    with open(fn, 'wb') as f: # 保存的模型过大，尝试一下只保存模型参数
+        torch.save([model], f)
 def model_load(fn):
     global model, criterion, optimizer
     with open(fn, 'rb') as f:
@@ -143,7 +144,6 @@ if not criterion:
 if args.cuda:
     model = model.cuda()
     criterion = criterion.cuda()
-### todo - 把这里的参数计算代码加到自己的代码中
 params = list(model.parameters()) + list(criterion.parameters())
 total_params = sum(x.size()[0] * x.size()[1] if len(x.size()) > 1 else x.size()[0] for x in params if x.size())
 print('Args:', args)
@@ -242,7 +242,8 @@ try:
             tmp = {}
             for prm in model.parameters():
                 tmp[prm] = prm.data.clone()
-                prm.data = optimizer.state[prm]['ax'].clone()
+                if 'ax' in optimizer.state[prm]:  # https://github.com/salesforce/awd-lstm-lm/issues/70
+                    prm.data = optimizer.state[prm]['ax'].clone()
 
             val_loss2 = evaluate(val_data)
             print('-' * 89)
@@ -256,8 +257,16 @@ try:
                 print('Saving Averaged!')
                 stored_loss = val_loss2
 
+            # for prm in model.parameters():
+            #     prm.data = tmp[prm].clone()  # https://github.com/salesforce/awd-lstm-lm/issues/70
+            nparams = 0
+            nparams_in_temp_keys = 0
             for prm in model.parameters():
-                prm.data = tmp[prm].clone()
+                nparams += 1
+                if prm in tmp.keys():
+                    nparams_in_temp_keys += 1
+                    prm.data = tmp[prm].clone()
+            print('params {}, params in tmp keys: {}'.format(nparams, nparams_in_temp_keys))
 
         else:
             val_loss = evaluate(val_data, eval_batch_size)
