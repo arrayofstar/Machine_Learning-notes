@@ -16,7 +16,7 @@ from utils import batchify, get_batch, repackage_hidden, zero_hidden
 parser = argparse.ArgumentParser(description='PyTorch PennTreeBank RNN/LSTM Language Model')
 parser.add_argument('--data', type=str, default='data/penn/',
                     help='location of the data corpus')
-parser.add_argument('--model', type=str, default='LSTM',
+parser.add_argument('--model', type=str, default='SHA-RNN',
                     help='type of recurrent net (LSTM, QRNN, GRU)')
 parser.add_argument('--emsize', type=int, default=400,
                     help='size of word embeddings')
@@ -67,7 +67,7 @@ parser.add_argument('--beta', type=float, default=1,
                     help='beta slowness regularization applied on RNN activiation (beta = 0 means no regularization)')
 parser.add_argument('--wdecay', type=float, default=1.2e-6,
                     help='weight decay applied to all weights')
-parser.add_argument('--resume', type=str,  default='',
+parser.add_argument('--resume', type=str,  default='16703427808429933.pt',
                     help='path of model to resume')
 parser.add_argument('--optimizer', type=str,  default='sgd',
                     help='optimizer to use (sgd, adam)')
@@ -104,10 +104,10 @@ def model_load(fn):
         d = m.state_dict()
         #del d['pos_emb']
         model.load_state_dict(d, strict=False)
-        if False:
-            for block in model.blocks:
-                print(block.attn)
-                if block.attn: block.attn.vq_collapse()
+        # if False:
+        #     for block in model.blocks:
+        #         print(block.attn)
+        #         if block.attn: block.attn.vq_collapse()
         del m
 
 import os
@@ -296,10 +296,10 @@ def train(epoch=0):
 
         if batch % loss_every_n_batches == 0:
             loss = functools.reduce(lambda x, y: x + y, losses)
-            #print(losses)
-            #loss.backward()
-            with amp.scale_loss(loss, optimizer) as scaled_loss:
-                scaled_loss.backward()
+            # print(losses)
+            loss.backward()
+            # with amp.scale_loss(loss, optimizer) as scaled_loss:
+            #     scaled_loss.backward()
 
             # `clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs.
             if args.clip: torch.nn.utils.clip_grad_norm_(params, args.clip)
@@ -370,8 +370,8 @@ try:
         print('Lookahead - k {} and alpha {}'.format(k, alpha))
         optimizer = Lookahead(base_optimizer=optimizer, k=k, alpha=alpha)
 
-    from apex import amp
-    model, optimizer = amp.initialize(model, optimizer, opt_level='O1')
+    # from apex import amp
+    # model, optimizer = amp.initialize(model, optimizer, opt_level='O1')
     #model, optimizer = amp.initialize(model, optimizer, opt_level='O2')
 
     for epoch in range(1, args.epochs+1):
