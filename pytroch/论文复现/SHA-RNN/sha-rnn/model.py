@@ -8,7 +8,7 @@ import torch.nn as nn
 
 import torch.nn.functional as F
 
-from apex.normalization.fused_layer_norm import FusedLayerNorm as LayerNorm
+# from apex.normalization.fused_layer_norm import FusedLayerNorm as LayerNorm
 
 import torch.utils
 import torch.utils.checkpoint
@@ -63,7 +63,7 @@ class Attention(nn.Module):
         self.drop = nn.Dropout(dropout) if dropout else None
         self.gelu = GELU()
         self.q = nn.Linear(nhid, nhid) if q else None
-        self.qln = LayerNorm(nhid, eps=1e-12)
+        self.qln = nn.LayerNorm(nhid, eps=1e-12)
         self.k = nn.Linear(nhid, nhid) if k else None
         self.v = nn.Linear(nhid, nhid) if v else None
         self.r = nn.Linear(2 * nhid, nhid) if r else None
@@ -163,12 +163,12 @@ class Block(nn.Module):
         if use_attn:
             self.attn = Attention(embed_dim, heads=heads, r=False, dropout=dropout)
         self.ff = Boom(embed_dim, hidden_dim, dropout=dropout, shortcut=True)
-        self.lnstart = LayerNorm(embed_dim, eps=1e-12)
-        self.lnmid = LayerNorm(embed_dim, eps=1e-12)
-        self.lnmem = LayerNorm(embed_dim, eps=1e-12)
-        self.lnout = LayerNorm(embed_dim, eps=1e-12)
-        self.lnff = LayerNorm(embed_dim, eps=1e-12)
-        self.lnxff = LayerNorm(embed_dim, eps=1e-12)
+        self.lnstart = nn.LayerNorm(embed_dim, eps=1e-12)
+        self.lnmid = nn.LayerNorm(embed_dim, eps=1e-12)
+        self.lnmem = nn.LayerNorm(embed_dim, eps=1e-12)
+        self.lnout = nn.LayerNorm(embed_dim, eps=1e-12)
+        self.lnff = nn.LayerNorm(embed_dim, eps=1e-12)
+        self.lnxff = nn.LayerNorm(embed_dim, eps=1e-12)
         self.drop = nn.Dropout(dropout)
         self.gelu = GELU()
         self.residual = residual
