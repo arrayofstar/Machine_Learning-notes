@@ -2,7 +2,7 @@ import torch
 from torch.nn import Parameter
 from functools import wraps
 
-class WeightDrop(torch.nn.Module):
+class WeightDrop(torch.nn.Module):  # DropConnect
     def __init__(self, module, weights, dropout=0, variational=False):
         super(WeightDrop, self).__init__()
         self.module = module
@@ -20,8 +20,8 @@ class WeightDrop(torch.nn.Module):
 
     def _setup(self):
         # Terrible temporary solution to an issue regarding compacting weights re: CUDNN RNN
-        if issubclass(type(self.module), torch.nn.RNNBase):
-            self.module.flatten_parameters = self.widget_demagnetizer_y2k_edition
+        # if issubclass(type(self.module), torch.nn.RNNBase):  # 注释掉之后没有看到明显的差别
+        #     self.module.flatten_parameters = self.widget_demagnetizer_y2k_edition
 
         for name_w in self.weights:
             print('Applying weight drop of {} to {}'.format(self.dropout, name_w))
