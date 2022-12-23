@@ -1,16 +1,8 @@
 # 《Regularizing and Optimizing LSTM Language Models》——LSTM语言模型的正则化和优化器策略
 
-[论文pdf](https://arxiv.org/abs/1708.02182v1)|
+[论文pdf]()|[B站视频]()|[知乎文章
 
-该论文中提出了一系列基于词的语言模型的正则化和优化策略。
 
-- 基于DropConnect(2013)的对LSTM中隐藏权重的正则方法，即作用于隐状态的权重矩阵。
-- 使用非单调条件触发的平均随机梯度下降(NT-ASGD)。
-- 其他正则化方法：
-  - 可变长度反向传播序列(Variable length backpropagation sequences)
-  - 变分丢弃(Variational dropout)：使用mask进行dropout
-  - 词嵌入层丢弃(Embedding dropout)：
-  - 权重共享(Weight tying)：共享嵌入层和输出层的权重矩阵，减少参数量。
 
 # 论文参数表
 
@@ -25,7 +17,7 @@
 | clip        | 梯度裁剪参数，默认值为0.25                                  |
 | epochs      | 训练的轮次，默认值为8000                                    |
 | batch_size  | 单次batch训练的大小，默认值为80                             |
-| bptt        | 序列长度 {可变的序列长度？}，默认值为70                     |
+| bptt        | 序列长度 {？？？}，默认值为70                               |
 | dropout     | 默认值为0.4                                                 |
 | dropouth    | 应用于rnn层的dropout，默认值为0.3                           |
 | dropouti    | 应用于embedding层的dropout，默认值为0.65                    |
@@ -43,6 +35,10 @@
 | when        | 何时（哪个时期）将学习率除以10-接受倍数，默认值为[-1]       |
 |             |                                                             |
 |             |                                                             |
+|             |                                                             |
+|             |                                                             |
+
+
 
 
 # 论文复现笔记
@@ -51,30 +47,7 @@
 
 论文数据集使用`getdata.sh`文件命令进行加载，window用户直接下载对应链接然后改名字即可：
 
+
+
 ## 模型组网
 
-
-
-
-
-# 一些源码中的问题
-
-- [UserWarning: RNN module weights are not part of single contiguous chunk of memory. and how to generate probability of a setence      #7](https://github.com/salesforce/awd-lstm-lm/issues/7)
-
-> I am getting the following warning:
->
-> UserWarning: RNN module weights are not part of a single  contiguous chunk of memory. This means they need to be compacted at  every call, possibly greatly increasing memory usage. To compact weights again call flatten_parameters().
->
-> I am using pytorch 0.20 and python 3.5
->
-> Also, how do you generate a probability of a given sentence?
-
-> Hi [@dixiematt8](https://github.com/dixiematt8),
->
-> This is an expected UserWarning and isn't a problem. As  the weights are changed before each call of the LSTM, they'd need to be  compacted anyway.
->
-> Re: probability of a given sentence, that is not defined.  As language is infinite in the sentences it can generate, there's no  well defined probability distribution. You can see which sentences may  be more of less likely but that's about the best I could suggest.
->
-> For that you'd multiply the probabilities (or sum the log  probabilities for a numerically more stable approach) of each of the  words according the model's prediction and select the sentence with the  larger probability.
->
-> Hope that helps!
