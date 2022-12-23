@@ -1,11 +1,16 @@
-# 《Regularizing and Optimizing LSTM Language Models》——LSTM语言模型的正则化和优化器策略
+# 《Single Headed Attention RNN: Stop Thinking With Your Head》——单头注意力的RNN模型
 
-[论文pdf](https://arxiv.org/abs/1708.02182v1)|
+[论文pdf](https://arxiv.org/abs/1911.11423)|[原文翻译1](https://zhuanlan.zhihu.com/p/94387032)|[原文翻译2](https://blog.csdn.net/weixin_37993251/article/details/103364977)
 
-该论文中提出了一系列基于词的语言模型的正则化和优化策略。
+整体评价：这篇文章整体上文风不是很严谨，更像是一篇博客的写作风格，源代码中也有很多的注释，部分地方的代码和原文中的流程图也有一定的出入，想要使用源代码中的模型架构的话，还需要花比较长的时间进行逻辑调整，但不可否认的是，这篇文章是我看的第一篇单独使用注意力机制和LSTM这样循环网络结合的文章。
 
-- 基于DropConnect(2013)的对LSTM中隐藏权重的正则方法，即作用于隐状态的权重矩阵。
-- 使用非单调条件触发的平均随机梯度下降(NT-ASGD)。
+模型本质：实际上算是LSTM和自注意力机制的一个串联，并且在对`enwik8数据集`处理时，使用了4个block，其中只有第三个加上的注意力机制。
+
+该论文中提出了单头注意力机制在语言序列预测中的应用，在Transformer流行的期间，依靠简单朴实的LSTM，结合**单头注意力机制**，依旧可以做出比较好的效果。
+
+- 单头注意力机制与LSTM架构的结合。
+- 使用了Boom的模块，利用linear层先升维再降维。
+- 
 - 其他正则化方法：
   - 可变长度反向传播序列(Variable length backpropagation sequences)
   - 变分丢弃(Variational dropout)：使用mask进行dropout

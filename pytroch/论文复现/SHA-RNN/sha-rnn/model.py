@@ -12,7 +12,7 @@ import torch.nn.functional as F
 
 import torch.utils
 import torch.utils.checkpoint
-tcheckpoint = torch.utils.checkpoint.checkpoint
+# tcheckpoint = torch.utils.checkpoint.checkpoint  # annotate by mf
 #checkpoint = torch.utils.checkpoint.checkpoint
 checkpoint = lambda f, *args, **kwargs: f(*args, **kwargs)
 
@@ -42,7 +42,7 @@ class Overparam(nn.Module):
         super().__init__()
         self.l1 = nn.Linear(nhid, 2 * nhid)
         #self.l2 = nn.Linear(2 * nhid, 2 * nhid)
-        self.inner_act = torch.tanh # GELU()
+        # self.inner_act = torch.tanh # GELU()  # mf-无用
         self.nhid = nhid
 
     def forward(self, x):
@@ -166,7 +166,7 @@ class Block(nn.Module):
         self.lnstart = nn.LayerNorm(embed_dim, eps=1e-12)
         self.lnmid = nn.LayerNorm(embed_dim, eps=1e-12)
         self.lnmem = nn.LayerNorm(embed_dim, eps=1e-12)
-        self.lnout = nn.LayerNorm(embed_dim, eps=1e-12)
+        self.lnout = nn.LayerNorm(embed_dim, eps=1e-12)  # mf-无用
         self.lnff = nn.LayerNorm(embed_dim, eps=1e-12)
         self.lnxff = nn.LayerNorm(embed_dim, eps=1e-12)
         self.drop = nn.Dropout(dropout)
@@ -252,7 +252,7 @@ class SHARNN(nn.Module):
             #rnn = rnns[idx % 2]
             #rnn = rnns[idx]
             rnn = True
-            self.blocks.append(Block(embed_dim, hidden_dim, self.num_heads, dropout=dropouth, rnn=rnn, residual=False, use_attn=True if idx == num_layers - 2 else False))
+            self.blocks.append(Block(embed_dim, hidden_dim, self.num_heads, dropout=dropouth, rnn=rnn, residual=False, use_attn=True if idx == num_layers - 2 else False))  # If you'd like to use the full 4 headed SHA-LSTM (which requires a batch size of 8 on the Titan V but gets a slightly better result as noted in the paper but twice as slow - your V100 may be able to get a larger batch though!) you can set use_attn to True for all layers on this line.
 
         #self.pos_emb = nn.Parameter(torch.zeros(size=(self.num_max_positions, 1, embed_dim), dtype=torch.float))
         self.pos_emb = [0] * self.num_max_positions
