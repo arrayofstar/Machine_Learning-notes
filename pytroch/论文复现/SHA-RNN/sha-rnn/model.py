@@ -353,7 +353,8 @@ class Boom(nn.Module):
 
     def forward(self, input):
         x = self.act(self.linear1(input))
-        if self.dropout: x = self.dropout(x)
+        if self.dropout:
+            x = self.dropout(x)
         if self.shortcut:
             # Trim the end off if the size is different
             ninp = input.shape[-1]

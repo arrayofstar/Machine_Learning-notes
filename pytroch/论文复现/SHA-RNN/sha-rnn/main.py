@@ -15,14 +15,14 @@ import model
 from utils import batchify, get_batch, repackage_hidden, zero_hidden
 
 parser = argparse.ArgumentParser(description='PyTorch PennTreeBank RNN/LSTM Language Model')
-parser.add_argument('--data', type=str, default='data/enwik8/',
-                    help='location of the data corpus')  # data/penn/
+parser.add_argument('--data', type=str, default='data/penn/',
+                    help='location of the data corpus')  # data/penn/  enwik8
 parser.add_argument('--model', type=str, default='LSTM',
                     help='type of recurrent net (LSTM, QRNN, GRU)')
-parser.add_argument('--emsize', type=int, default=1024,
-                    help='size of word embeddings')  # 400
-parser.add_argument('--nhid', type=int, default=4096,
-                    help='number of hidden units per layer')  # 1150
+parser.add_argument('--emsize', type=int, default=400,
+                    help='size of word embeddings')  # 400   1024
+parser.add_argument('--nhid', type=int, default=1150,
+                    help='number of hidden units per layer')  # 1150  4096
 parser.add_argument('--nlayers', type=int, default=4,
                     help='number of layers')  # 3
 parser.add_argument('--lr', type=float, default=2e-3,
@@ -31,36 +31,36 @@ parser.add_argument('--clip', type=float, default=0.25,
                     help='gradient clipping')
 parser.add_argument('--epochs', type=int, default=8000,
                     help='upper epoch limit')
-parser.add_argument('--batch_size', type=int, default=16, metavar='N',
-                    help='batch size')  # 80
-parser.add_argument('--bptt', type=int, default=1024,
-                    help='sequence length')  # 70
+parser.add_argument('--batch_size', type=int, default=80, metavar='N',
+                    help='batch size')  # 80  16
+parser.add_argument('--bptt', type=int, default=70,
+                    help='sequence length')  # 70   1024
 parser.add_argument('--warmup', type=int, default=800,
                     help='warmup for learning rate')  # 4000
 parser.add_argument('--cooldown', type=int, default=None,
                     help='cooldown for learning rate')
 parser.add_argument('--accumulate', type=int, default=1,
                     help='number of batches to accumulate before gradient update')
-parser.add_argument('--dropout', type=float, default=0.1,
-                    help='dropout applied to layers (0 = no dropout)')  # 0.4
-parser.add_argument('--dropouth', type=float, default=0.1,
-                    help='dropout for rnn layers (0 = no dropout)')  # 0.3
-parser.add_argument('--dropouti', type=float, default=0.1,
-                    help='dropout for input embedding layers (0 = no dropout)')  # 0.65
+parser.add_argument('--dropout', type=float, default=0.4,
+                    help='dropout applied to layers (0 = no dropout)')  # 0.4  0.1
+parser.add_argument('--dropouth', type=float, default=0.3,
+                    help='dropout for rnn layers (0 = no dropout)')  # 0.3  0.1
+parser.add_argument('--dropouti', type=float, default=0.65,
+                    help='dropout for input embedding layers (0 = no dropout)')  # 0.65  0.1
 parser.add_argument('--dropoute', type=float, default=0.1,
                     help='dropout to remove words from embedding layer (0 = no dropout)')
-parser.add_argument('--wdrop', type=float, default=0.0,
-                    help='amount of weight dropout to apply to the RNN hidden to hidden matrix')
+parser.add_argument('--wdrop', type=float, default=0.1,
+                    help='amount of weight dropout to apply to the RNN hidden to hidden matrix')  # 0.0  0.0
 parser.add_argument('--seed', type=int, default=5512,
                     help='random seed')  # 1111
 parser.add_argument('--nonmono', type=int, default=5,
                     help='random seed')
 parser.add_argument('--cuda', action='store_false',
                     help='use CUDA')
-parser.add_argument('--log-interval', type=int, default=10, metavar='N',
+parser.add_argument('--log_interval', type=int, default=10, metavar='N',
                     help='report interval')  # 200
 # randomhash = ''.join(str(time.time()).split('.'))
-randomhash = 'ENWIK8'
+randomhash = 'penn'
 parser.add_argument('--save', type=str,  default=randomhash+'.pt',
                     help='path to save the final model')
 parser.add_argument('--alpha', type=float, default=2,
@@ -69,9 +69,9 @@ parser.add_argument('--beta', type=float, default=1,
                     help='beta slowness regularization applied on RNN activiation (beta = 0 means no regularization)')
 parser.add_argument('--wdecay', type=float, default=1.2e-6,
                     help='weight decay applied to all weights')
-parser.add_argument('--resume', type=str,  default='',
+parser.add_argument('--resume', type=str,  default='penn.pt',
                     help='path of model to resume')
-parser.add_argument('--optimizer', type=str,  default='lamb',
+parser.add_argument('--optimizer', type=str,  default='adam',
                     help='optimizer to use (sgd, adam)')  # sgd
 parser.add_argument('--when', nargs="+", type=int, default=[-1],
                     help='When (which epochs) to divide the learning rate by 10 - accepts multiple')
@@ -147,6 +147,8 @@ model = model.SHARNN(args.model, ntokens, args.emsize, args.nhid, args.nlayers, 
 #model = model.LNRNN(args.model, ntokens, args.emsize, args.nhid, args.nlayers, args.dropout, args.dropouth, args.dropouti, args.dropoute, args.wdrop, args.tied)
 #model = model.LNRR(args.model, ntokens, args.emsize, args.nhid, args.nlayers, args.dropout, args.dropouth, args.dropouti, args.dropoute, args.wdrop, args.tied)
 ###
+
+
 if args.resume and args.epochs > 0:
     print('Resuming model ...')
     model_load(args.resume)
