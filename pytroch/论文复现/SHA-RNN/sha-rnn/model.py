@@ -161,7 +161,8 @@ class Block(nn.Module):
         #self.attn = PyTorchAttention(embed_dim, heads=heads, dropout=dropout)
         self.attn = None
         if use_attn:
-            self.attn = Attention(embed_dim, heads=heads, r=False, dropout=dropout)
+            # self.attn = Attention(embed_dim, heads=heads, r=False, dropout=dropout)
+            self.attn = PyTorchAttention(embed_dim, heads=heads, dropout=dropout)
         self.ff = Boom(embed_dim, hidden_dim, dropout=dropout, shortcut=True)
         self.lnstart = nn.LayerNorm(embed_dim, eps=1e-12)
         self.lnmid = nn.LayerNorm(embed_dim, eps=1e-12)
@@ -355,7 +356,7 @@ class Boom(nn.Module):
         x = self.act(self.linear1(input))
         if self.dropout:
             x = self.dropout(x)
-        if self.shortcut:
+        if self.shortcut:  # 可能是残差连接的一种方式？ 0302
             # Trim the end off if the size is different
             ninp = input.shape[-1]
             x = torch.narrow(x, -1, 0, x.shape[-1] // ninp * ninp)

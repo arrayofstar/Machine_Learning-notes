@@ -69,7 +69,7 @@ parser.add_argument('--beta', type=float, default=1,
                     help='beta slowness regularization applied on RNN activiation (beta = 0 means no regularization)')
 parser.add_argument('--wdecay', type=float, default=1.2e-6,
                     help='weight decay applied to all weights')
-parser.add_argument('--resume', type=str,  default='penn.pt',
+parser.add_argument('--resume', type=str,  default='',
                     help='path of model to resume')
 parser.add_argument('--optimizer', type=str,  default='adam',
                     help='optimizer to use (sgd, adam)')  # sgd

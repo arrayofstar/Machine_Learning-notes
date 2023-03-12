@@ -58,7 +58,7 @@ parser.add_argument('--beta', type=float, default=1,
                     help='beta slowness regularization applied on RNN activiation (beta = 0 means no regularization)')
 parser.add_argument('--wdecay', type=float, default=1.2e-6,
                     help='weight decay applied to all weights')
-parser.add_argument('--resume', type=str,  default='model_para.pt',
+parser.add_argument('--resume', type=str,  default='model_para_new.pt',
                     help='path of model to resume')
 parser.add_argument('--optimizer', type=str,  default='sgd',
                     help='optimizer to use (sgd, adam)')
@@ -81,10 +81,10 @@ if torch.cuda.is_available():
 ###############################################################################
 
 def model_save(fn):
-    with open(fn, 'wb') as f:
-        torch.save([model, criterion, optimizer], f)
-    # with open(fn, 'wb') as f: # 保存的模型过大，尝试一下只保存模型参数
-    #     torch.save([model,criterion], f)
+    # with open(fn, 'wb') as f:
+    #     torch.save([model, criterion, optimizer], f)
+    with open(fn, 'wb') as f: # 保存的模型过大，尝试一下只保存模型参数
+        torch.save([model], f)
 def model_load(fn):
     global model, criterion, optimizer
     with open(fn, 'rb') as f:
