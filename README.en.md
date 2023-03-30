@@ -1,36 +1,21 @@
 # machine_learning
 
-#### Description
-这个仓库的主要目的是记录一下平时学习机器学习的过程。
+**[简体中文]((./README.md))** | English
+------------------------------------------------------------------------------------------
+<p align="center">
+  <a href=""><img src="https://img.shields.io/badge/python>3.7+-aff.svg"></a>
+</p>
 
-#### Software Architecture
-Software architecture description
+## Description
+The purpose of this repository is to record the process of machine learning.
 
-#### Installation
+## Contents
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### Notes-Tensorflow
 
-#### Instructions
+### Notes-Pytorch
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### Notes-PaddlePaddle
 
-#### Contribution
-
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
-
-
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+### Notes-GUI
+1.add some note about streamlit
