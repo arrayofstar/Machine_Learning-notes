@@ -16,3 +16,6 @@ The purpose of this repository is to record the process of machine learning.
 ### Notes-Pytorch
 
 ### Notes-PaddlePaddle
+
+### Notes-GUI
+1.add some note about streamlit

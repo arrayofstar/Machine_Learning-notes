@@ -17,6 +17,10 @@
 
 ### 笔记-PaddlePaddle
 
+### Notes-GUI
+
+1.添加了关于streamlit的相关笔记
+
 ## github小技巧
 
 对于不是在根目录下的github文件，可以访问[这个网址](https://minhaskamal.github.io/DownGit/#/home?url=https:%2F%2Fgithub.com%2Fjindongwang%2Ftransferlearning%2Fedit%2Fmaster%2Fcode%2Fdeep%2Fadarnn)来进行打包下载。
