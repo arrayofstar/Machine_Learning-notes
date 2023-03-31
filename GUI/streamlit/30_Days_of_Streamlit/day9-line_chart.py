@@ -1,4 +1,8 @@
-'''https://30days.streamlit.app/?challenge=Day+9'''
+'''
+https://30days.streamlit.app/?challenge=Day+9
+st.write允许将文本和参数写入Streamlight应用程序。
+'''
+
 
 import streamlit as st
 import pandas as pd
