@@ -1,5 +1,7 @@
 import numpy as np
 import torch
+from tqdm import tqdm
+
 from data.synthetic_dataset import create_synthetic_dataset, SyntheticDataset
 from models.seq2seq import EncoderRNN, DecoderRNN, Net_GRU
 from loss.dilate_loss import dilate_loss
@@ -10,28 +12,6 @@ import matplotlib.pyplot as plt
 import warnings
 import warnings
 
-warnings.simplefilter('ignore')
-
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-random.seed(0)
-
-# parameters
-batch_size = 100
-N = 500
-N_input = 20
-N_output = 20
-sigma = 0.01
-gamma = 0.01
-
-# Load synthetic dataset
-X_train_input, X_train_target, X_test_input, X_test_target, train_bkp, test_bkp = create_synthetic_dataset(N, N_input,
-                                                                                                           N_output,
-                                                                                                           sigma)
-dataset_train = SyntheticDataset(X_train_input, X_train_target, train_bkp)
-dataset_test = SyntheticDataset(X_test_input, X_test_target, test_bkp)
-trainloader = DataLoader(dataset_train, batch_size=batch_size, shuffle=True, num_workers=1)
-testloader = DataLoader(dataset_test, batch_size=batch_size, shuffle=False, num_workers=1)
-
 
 def train_model(net, loss_type, learning_rate, epochs=1000, gamma=0.001,
                 print_every=50, eval_every=50, verbose=1, Lambda=1, alpha=0.5):
@@ -39,7 +19,7 @@ def train_model(net, loss_type, learning_rate, epochs=1000, gamma=0.001,
     criterion = torch.nn.MSELoss()
 
     for epoch in range(epochs):
-        for i, data in enumerate(trainloader, 0):
+        for data in tqdm(trainloader):
             inputs, target, _ = data
             inputs = torch.tensor(inputs, dtype=torch.float32).to(device)
             target = torch.tensor(target, dtype=torch.float32).to(device)
@@ -60,8 +40,8 @@ def train_model(net, loss_type, learning_rate, epochs=1000, gamma=0.001,
             loss.backward()
             optimizer.step()
 
-        if (verbose):
-            if (epoch % print_every == 0):
+        if verbose:
+            if epoch % print_every == 0:
                 print('epoch ', epoch, ' loss ', loss.item(), ' loss shape ', loss_shape.item(), ' loss temporal ',
                       loss_temporal.item())
                 eval_model(net, testloader, gamma, verbose=1)
@@ -110,47 +90,74 @@ def eval_model(net, loader, gamma, verbose=1):
           np.array(losses_tdi).mean())
 
 
-encoder = EncoderRNN(input_size=1, hidden_size=128, num_grulstm_layers=1, batch_size=batch_size).to(device)
-decoder = DecoderRNN(input_size=1, hidden_size=128, num_grulstm_layers=1, fc_units=16, output_size=1).to(device)
-net_gru_dilate = Net_GRU(encoder, decoder, N_output, device).to(device)
-train_model(net_gru_dilate, loss_type='dilate', learning_rate=0.001, epochs=500, gamma=gamma, print_every=50,
-            eval_every=50, verbose=1)
+if __name__ == '__main__':
 
-encoder = EncoderRNN(input_size=1, hidden_size=128, num_grulstm_layers=1, batch_size=batch_size).to(device)
-decoder = DecoderRNN(input_size=1, hidden_size=128, num_grulstm_layers=1, fc_units=16, output_size=1).to(device)
-net_gru_mse = Net_GRU(encoder, decoder, N_output, device).to(device)
-train_model(net_gru_mse, loss_type='mse', learning_rate=0.001, epochs=500, gamma=gamma, print_every=50, eval_every=50,
-            verbose=1)
+    warnings.simplefilter('ignore')
 
-# Visualize results
-gen_test = iter(testloader)
-test_inputs, test_targets, breaks = next(gen_test)
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    random.seed(0)
 
-test_inputs = torch.tensor(test_inputs, dtype=torch.float32).to(device)
-test_targets = torch.tensor(test_targets, dtype=torch.float32).to(device)
-criterion = torch.nn.MSELoss()
+    # parameters
+    batch_size = 100
+    N = 500
+    N_input = 20
+    N_output = 20
+    sigma = 0.01
+    gamma = 0.01
 
-nets = [net_gru_mse, net_gru_dilate]
+    # Load synthetic dataset
+    X_train_input, X_train_target, X_test_input, X_test_target, train_bkp, test_bkp = create_synthetic_dataset(N,
+                                                                                                               N_input,
+                                                                                                               N_output,
+                                                                                                               sigma)
+    dataset_train = SyntheticDataset(X_train_input, X_train_target, train_bkp)
+    dataset_test = SyntheticDataset(X_test_input, X_test_target, test_bkp)
+    trainloader = DataLoader(dataset_train, batch_size=batch_size, shuffle=True, num_workers=1, drop_last=True)
+    testloader = DataLoader(dataset_test, batch_size=batch_size, shuffle=False, num_workers=1, drop_last=True)
 
-for ind in range(1, 51):
-    plt.figure()
-    plt.rcParams['figure.figsize'] = (17.0, 5.0)
-    k = 1
-    for net in nets:
-        pred = net(test_inputs).to(device)
 
-        input = test_inputs.detach().cpu().numpy()[ind, :, :]
-        target = test_targets.detach().cpu().numpy()[ind, :, :]
-        preds = pred.detach().cpu().numpy()[ind, :, :]
+    encoder = EncoderRNN(input_size=1, hidden_size=128, num_grulstm_layers=1, batch_size=batch_size).to(device)
+    decoder = DecoderRNN(input_size=1, hidden_size=128, num_grulstm_layers=1, fc_units=16, output_size=1).to(device)
+    net_gru_dilate = Net_GRU(encoder, decoder, N_output, device).to(device)
+    train_model(net_gru_dilate, loss_type='dilate', learning_rate=0.001, epochs=20, gamma=gamma, print_every=5,
+                eval_every=5, verbose=1)
 
-        plt.subplot(1, 3, k)
-        plt.plot(range(0, N_input), input, label='input', linewidth=3)
-        plt.plot(range(N_input - 1, N_input + N_output), np.concatenate([input[N_input - 1:N_input], target]),
-                 label='target', linewidth=3)
-        plt.plot(range(N_input - 1, N_input + N_output), np.concatenate([input[N_input - 1:N_input], preds]),
-                 label='prediction', linewidth=3)
-        plt.xticks(range(0, 40, 2))
-        plt.legend()
-        k = k + 1
+    encoder = EncoderRNN(input_size=1, hidden_size=128, num_grulstm_layers=1, batch_size=batch_size).to(device)
+    decoder = DecoderRNN(input_size=1, hidden_size=128, num_grulstm_layers=1, fc_units=16, output_size=1).to(device)
+    net_gru_mse = Net_GRU(encoder, decoder, N_output, device).to(device)
+    train_model(net_gru_mse, loss_type='mse', learning_rate=0.001, epochs=20, gamma=gamma, print_every=5,
+                eval_every=5,
+                verbose=1)
 
-    plt.show()
+    # Visualize results
+    gen_test = iter(testloader)
+    test_inputs, test_targets, breaks = next(gen_test)
+
+    test_inputs = torch.tensor(test_inputs, dtype=torch.float32).to(device)
+    test_targets = torch.tensor(test_targets, dtype=torch.float32).to(device)
+    criterion = torch.nn.MSELoss()
+
+    nets = [net_gru_mse, net_gru_dilate]
+
+    for ind in range(1, 5):
+        plt.figure()
+        plt.rcParams['figure.figsize'] = (17.0, 5.0)
+        k = 1
+        for net in nets:
+            pred = net(test_inputs).to(device)
+
+            input = test_inputs.detach().cpu().numpy()[ind, :, :]
+            target = test_targets.detach().cpu().numpy()[ind, :, :]
+            preds = pred.detach().cpu().numpy()[ind, :, :]
+
+            plt.subplot(1, 2, k)
+            plt.plot(range(0, N_input), input, label='input', linewidth=3)
+            plt.plot(range(N_input - 1, N_input + N_output), np.concatenate([input[N_input - 1:N_input], target]),
+                     label='target', linewidth=3)
+            plt.plot(range(N_input - 1, N_input + N_output), np.concatenate([input[N_input - 1:N_input], preds]),
+                     label='prediction', linewidth=3)
+            plt.xticks(range(0, 40, 2))
+            plt.legend()
+            k = k + 1
+
+        plt.show()
