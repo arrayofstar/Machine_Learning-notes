@@ -115,7 +115,6 @@ if __name__ == '__main__':
     trainloader = DataLoader(dataset_train, batch_size=batch_size, shuffle=True, num_workers=1, drop_last=True)
     testloader = DataLoader(dataset_test, batch_size=batch_size, shuffle=False, num_workers=1, drop_last=True)
 
-
     encoder = EncoderRNN(input_size=1, hidden_size=128, num_grulstm_layers=1, batch_size=batch_size).to(device)
     decoder = DecoderRNN(input_size=1, hidden_size=128, num_grulstm_layers=1, fc_units=16, output_size=1).to(device)
     net_gru_dilate = Net_GRU(encoder, decoder, N_output, device).to(device)
