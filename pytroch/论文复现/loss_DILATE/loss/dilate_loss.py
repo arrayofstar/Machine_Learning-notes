@@ -1,8 +1,8 @@
 import torch
-
 from utils.tools import Timer
-from . import soft_dtw
+
 from . import path_soft_dtw
+from . import soft_dtw
 
 
 def dilate_loss(outputs, targets, alpha, gamma, device):

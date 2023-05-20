@@ -5,10 +5,10 @@
 # @File    : test.py
 # @Desc    :
 import time
-import numpy as np
-import numba
-from numba import cuda
 
+import numba
+import numpy as np
+from numba import cuda
 
 print(np.__version__)
 print(numba.__version__)

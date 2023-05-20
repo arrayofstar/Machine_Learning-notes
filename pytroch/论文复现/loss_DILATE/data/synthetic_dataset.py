@@ -1,6 +1,7 @@
+import random
+
 import numpy as np
 import torch
-import random
 from torch.utils.data import Dataset, DataLoader
 
 

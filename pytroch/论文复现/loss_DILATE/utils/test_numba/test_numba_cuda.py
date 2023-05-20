@@ -4,7 +4,7 @@
 # @File    : test_numba_cuda.py
 # @Desc    : 对numba官网中的CUDA进行测试
 import math
-import torch
+
 import numpy as np
 # 1，GPU内核通常以下面的方式启动
 from numba import cuda

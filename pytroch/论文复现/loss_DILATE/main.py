@@ -1,16 +1,16 @@
+import random
+import warnings
+
+import matplotlib.pyplot as plt
 import numpy as np
 import torch
+from torch.utils.data import DataLoader
 from tqdm import tqdm
+from tslearn.metrics import dtw_path
 
 from data.synthetic_dataset import create_synthetic_dataset, SyntheticDataset
-from models.seq2seq import EncoderRNN, DecoderRNN, Net_GRU
 from loss.dilate_loss import dilate_loss
-from torch.utils.data import DataLoader
-import random
-from tslearn.metrics import dtw, dtw_path
-import matplotlib.pyplot as plt
-import warnings
-import warnings
+from models.seq2seq import EncoderRNN, DecoderRNN, Net_GRU
 
 
 def train_model(net, loss_type, learning_rate, epochs=1000, gamma=0.001,
