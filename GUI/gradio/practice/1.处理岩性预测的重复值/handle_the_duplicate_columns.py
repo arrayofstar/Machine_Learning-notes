@@ -1,8 +1,7 @@
 # 用于处理
 
-import os
-import pandas as pd
 import gradio as gr
+import pandas as pd
 
 
 def handle_excel(file, select_sheet):
@@ -21,7 +20,7 @@ def handle_excel(file, select_sheet):
             df_output = pd.concat([df_output, df], axis=0)
             start_depth = df_data['开始深度'].iloc[idx]
             temp_before = df_data['岩性'].iloc[idx]
-    df_output.to_csv("test.csv", index=False)
+    df_output.to_csv("test.csv", index=False, encoding='utf_8_sig')
     return "## 成功保存至test.csv"
 
 
