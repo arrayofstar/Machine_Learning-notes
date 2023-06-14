@@ -8,10 +8,9 @@ from train import train, test
 def main():
     data_path = "./Data/GasPrice.csv"
     P = 12  # sequence length
-    step = 12  # ahead predict steps
+    step = 3  # ahead predict steps
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    device = torch.device("cpu")
 
     X_train, Y_train, X_test, Y_test, data_df_combined_clean = load_data(data_path, P=P, step=step)
     print(X_train.shape)

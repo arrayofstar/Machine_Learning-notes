@@ -12,6 +12,7 @@ def train(model, x_train, y_train, epochs=10, batch_size=32, alpha=0.3, beta=0.3
 
     torch_dataloader = TorchDataLoader(batch_size)
     train_loader = torch_dataloader.torch_dataloader(x_train, y_train)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     x_len = x_train.shape[1]
     for epoch in range(0, epochs):
@@ -48,7 +49,10 @@ def test(model, x_test, y_test, data_df_combined_clean, device="cpu"):
 
     pred_dat, h1, c1, h2, c2, h3, c3 = model(x_test, h1, c1, h2, c2, h3, c3)
 
-    pred_dat = np.array(pred_dat.cpu().detach().numpy())
+    try:
+        pred_dat = np.array(pred_dat.detach().numpy())
+    except:
+        pred_dat = np.array(pred_dat.cpu().detach().numpy())
 
     # De-standardize predictions
     preds_unstd = pred_dat * data_df_combined_clean.iloc[:, -1].std() + data_df_combined_clean.iloc[:, -1].mean()
