@@ -6,7 +6,7 @@ import numpy as np
 
 # define core fn, which returns a generator {steps} times before returning the image
 def fake_diffusion(steps):
-    for _ in range(steps):
+    for _ in range(int(steps)):
         time.sleep(1)
         image = np.random.random((600, 600, 3))
         yield image
