@@ -1,12 +1,14 @@
-'''
-https://30days.streamlit.app/?challenge=Day+9
-st.write允许将文本和参数写入Streamlight应用程序。
-'''
+# -*- coding: utf-8 -*-
+# @Time    : 2023/5/20
+# @Author  : Dreamstar
+# @File    : day9-line_chart.py
+# @Link    : https://30days.streamlit.app/?challenge=Day+9
+# @Desc    : st.line_chart 显示一个折线图。适合于很多“画个图看看”的场景，但不易调节样式。
 
 
-import streamlit as st
-import pandas as pd
 import numpy as np
+import pandas as pd
+import streamlit as st
 
 st.header('Line chart')
 

@@ -2,7 +2,7 @@
 # @Time    : 2023/6/11 11:01
 # @Author  : Dreamstar
 # @File    : day21-progress-进度条.py
-# @Desc    : https://30days.streamlit.app/?challenge=Day21
+# @Link    : https://30days.streamlit.app/?challenge=Day21
 
 
 import time

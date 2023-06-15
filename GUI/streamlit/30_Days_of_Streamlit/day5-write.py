@@ -1,8 +1,13 @@
-'''https://30days.streamlit.app/?challenge=Day+5'''
+# -*- coding: utf-8 -*-
+# @Time    : 2023/5/20
+# @Author  : Dreamstar
+# @File    : day5-write.py
+# @Link    : https://30days.streamlit.app/?challenge=Day+5
+# @Desc    : Streamlit中的write的功能介绍
 
 
-import numpy as np
 import altair as alt
+import numpy as np
 import pandas as pd
 import streamlit as st
 

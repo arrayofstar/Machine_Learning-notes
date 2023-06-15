@@ -2,7 +2,7 @@
 # @Time    : 2023/6/11 11:04
 # @Author  : Dreamstar
 # @File    : day22-form-表单.py
-# @Desc    : https://30days.streamlit.app/?challenge=Day22
+# @Link    : https://30days.streamlit.app/?challenge=Day22
 # @Desc    : 表单是一个视觉上将元素和组件编组的容器，包含一个提交按钮，只有当提交的时候，才会出发交互操作。
 
 
