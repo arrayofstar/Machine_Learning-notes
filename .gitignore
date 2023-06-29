@@ -17,3 +17,7 @@ pytroch/论文复现/SHA-RNN/sha-rnn/corpus.148650ff682fa3f76e78c18d7d6d5bd6.dat
 /pytroch/论文复现/AWD-LSTM/awd-lstm-lm/model_para.pt
 /pytroch/论文复现/AWD-LSTM/awd-lstm-lm/corpus.148650ff682fa3f76e78c18d7d6d5bd6.data
 
+/GUI/streamlit/demo/miss_welllogging_predict/data/welldata_test/
+/GUI/streamlit/demo/miss_welllogging_predict/data/welldata_test_2/
+/GUI/streamlit/demo/miss_welllogging_predict_webui/data/dataset/
+/GUI/streamlit/demo/miss_welllogging_predict_webui/
