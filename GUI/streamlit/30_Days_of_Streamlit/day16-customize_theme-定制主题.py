@@ -3,7 +3,8 @@
 # @Time    : 2023-03-31 15:09
 # @Author  : Dreamstar
 # @File    : day16-customize_theme-定制主题.py.py
-# @Desc    : https://30days.streamlit.app/?challenge=Day+16
+# @Link    : https://30days.streamlit.app/?challenge=Day+16
+# @Desc    : 通过调整 config.toml 中的选项来自定义应用的主题，这个配置文件应当被放在与应用并行的 .streamlit 文件夹内。
 
 import streamlit as st
 

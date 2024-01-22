@@ -3,7 +3,8 @@
 # @Time    : 2023-03-31 15:01
 # @Author  : Dreamstar
 # @File    : day15-latex-公式.py
-# @Desc    : https://30days.streamlit.app/?challenge=Day+15
+# @Link    : https://30days.streamlit.app/?challenge=Day+15
+# @Desc    : st.latex 以 LaTeX 语法显示数学公式。
 
 import streamlit as st
 

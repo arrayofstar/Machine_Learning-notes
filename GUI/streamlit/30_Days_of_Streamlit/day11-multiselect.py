@@ -1,4 +1,9 @@
-'''https://30days.streamlit.app/?challenge=Day+11'''
+# -*- coding: utf-8 -*-
+# @Time    : 2023/5/31
+# @Author  : Dreamstar
+# @File    : day11-multiselect.py
+# @Link    : https://30days.streamlit.app/?challenge=Day+11
+# @Desc    : st.multiselect 显示一个多选组件。
 
 
 import streamlit as st

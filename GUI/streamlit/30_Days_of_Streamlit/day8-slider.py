@@ -1,8 +1,14 @@
-'''https://30days.streamlit.app/?challenge=Day+8'''
+# -*- coding: utf-8 -*-
+# @Time    : 2023/5/20
+# @Author  : Dreamstar
+# @File    : day8-slider.py
+# @Link    : https://30days.streamlit.app/?challenge=Day+8
+# @Desc    : Streamlit中的滑动条
 
+
+from datetime import time, datetime
 
 import streamlit as st
-from datetime import time, datetime
 
 st.header('st.slider')
 
