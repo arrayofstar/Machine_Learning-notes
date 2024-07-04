@@ -4,7 +4,6 @@
 __all__ = ['gMLP']
 
 # %% ../../nbs/040_models.gMLP.ipynb 3
-from ..imports import *
 
 
 # %% ../../nbs/040_models.gMLP.ipynb 4

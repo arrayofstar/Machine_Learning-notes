@@ -6,8 +6,9 @@ __all__ = ['FCNPlus']
 from fastai.layers import *
 
 from .layers import *
+
+
 # %% ../../nbs/039_models.FCNPlus.ipynb 3
-from ..imports import *
 
 
 # %% ../../nbs/039_models.FCNPlus.ipynb 4

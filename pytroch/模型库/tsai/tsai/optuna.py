@@ -3,9 +3,6 @@
 # %% auto 0
 __all__ = ['run_optuna_study']
 
-import warnings
-from pathlib import Path
-
 import joblib
 from fastcore.script import *
 

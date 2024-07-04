@@ -5,7 +5,6 @@ __all__ = ['FCN']
 
 from .layers import *
 # %% ../../nbs/038_models.FCN.ipynb 3
-from ..imports import *
 
 
 # %% ../../nbs/038_models.FCN.ipynb 4
