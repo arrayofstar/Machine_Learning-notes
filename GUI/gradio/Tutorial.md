@@ -65,7 +65,7 @@ demo = gr.Interface(
 demo.launch()
 ```
 
-![组件属性](images/1.2.components_attributes)
+![组件属性](images/1.2.components_attributes.png)
 
 ### 多个输入和输出的组件 - Multiple Input and Output Components
 
@@ -135,7 +135,7 @@ with gr.Blocks() as demo:
 demo.launch()
 ```
 
-![hello_block](images/1.3.hello_block)
+![hello_block](images/1.3.hello_block.png)
 
 > 需要注意：
 >
@@ -236,7 +236,7 @@ demo = gr.Interface(
 demo.launch()
 ```
 
-![示例输入](images/2.1.example_inputs)
+![示例输入](images/2.1.example_inputs.png)
 
 ### 错误提示 - Errors
 
@@ -250,7 +250,7 @@ demo.launch()
 - `description`: 它接受text、markdown或HTML并将其放在标题下。
 - `article`: 它接受text、markdown或HTML 并将其放置在interface窗口的最下面。
 
-![interface中的描述性组件](images/2.2.Descriptive_content_in_interface)
+![interface中的描述性组件](images/2.2.Descriptive_content_in_interface.png)
 
 在**Blocks**中可以使用`gr.Markdown(...)`或`gr.HTML(...)`组件来插入text、markdown或HTML。
 
@@ -508,7 +508,7 @@ Gradio可以在任何运行Python的地方运行，包括本地jupyter笔记本�
 
 # 表格数据科学与绘图 - Tabular Data Science And Plots
 
-## 
+
 
 # 客户端库 - Client Libraries
 
