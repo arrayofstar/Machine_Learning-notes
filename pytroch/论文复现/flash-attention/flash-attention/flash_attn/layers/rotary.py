@@ -1,13 +1,10 @@
 # Copyright (c) 2023, Tri Dao.
 
 from typing import Tuple, Optional
-import math
-
-import torch
-
-from einops import rearrange, repeat
 
 import rotary_emb
+import torch
+from einops import rearrange, repeat
 
 
 def rotate_half(x, interleaved=False):

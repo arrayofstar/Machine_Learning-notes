@@ -6,7 +6,6 @@
 from typing import Any, Dict, Optional
 
 import torch
-import torch.nn.functional as F
 from torch import Tensor
 from torchmetrics import Metric
 

@@ -1,8 +1,7 @@
 import inspect
 
-import torch.nn as nn
-
 import hydra
+import torch.nn as nn
 
 try:
     from apex.contrib.layer_norm import FastLayerNorm

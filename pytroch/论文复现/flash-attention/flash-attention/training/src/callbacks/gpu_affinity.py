@@ -1,8 +1,7 @@
-import torch
-
-from pytorch_lightning import Callback, Trainer, LightningModule
-
 import logging
+
+import torch
+from pytorch_lightning import Callback, Trainer, LightningModule
 
 log = logging.getLogger(__name__)  # We want a logger for each process, not just the rank 0
 

@@ -1,15 +1,10 @@
 # Run test with:
 # torchrun --no_python --nproc_per_node=8 pytest -q -s tests/modules/test_embedding_parallel.py
 
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
 import pytest
-
-from einops import rearrange
-
+import torch
 from apex.transformer import parallel_state
-
+from einops import rearrange
 from flash_attn.modules.embedding import GPT2Embeddings, ParallelGPT2Embeddings
 
 is_sm8x = torch.cuda.get_device_capability('cuda')[0] >= 8

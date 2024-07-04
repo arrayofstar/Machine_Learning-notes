@@ -2,10 +2,9 @@
 # Adapted from https://github.com/NVIDIA/apex/blob/master/apex/contrib/layer_norm/layer_norm.py
 
 import torch
-from torch.nn import init
-
 from flash_attn.ops.layer_norm import DropoutAddLayerNormFn, DropoutAddLayerNormSubsetFn
 from flash_attn.ops.layer_norm import DropoutAddLayerNormParallelResidualFn
+from torch.nn import init
 
 
 def rms_norm(x, weight, epsilon):

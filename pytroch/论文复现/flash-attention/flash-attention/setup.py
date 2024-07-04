@@ -1,18 +1,14 @@
 # Adapted from https://github.com/NVIDIA/apex/blob/master/setup.py
-import sys
-import warnings
+import ast
 import os
 import re
-import ast
-from pathlib import Path
-from packaging.version import parse, Version
-
-from setuptools import setup, find_packages
 import subprocess
+from pathlib import Path
 
 import torch
-from torch.utils.cpp_extension import BuildExtension, CppExtension, CUDAExtension, CUDA_HOME
-
+from packaging.version import parse, Version
+from setuptools import setup, find_packages
+from torch.utils.cpp_extension import BuildExtension, CUDAExtension, CUDA_HOME
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()

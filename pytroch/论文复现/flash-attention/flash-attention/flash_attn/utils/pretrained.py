@@ -1,8 +1,6 @@
 import torch
 
 from transformers.utils import WEIGHTS_NAME, WEIGHTS_INDEX_NAME
-from transformers.utils import is_remote_url
-from transformers.modeling_utils import load_state_dict
 from transformers.utils.hub import cached_file, get_checkpoint_shard_files
 
 

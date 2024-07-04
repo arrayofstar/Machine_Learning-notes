@@ -2,9 +2,6 @@ import os
 from pathlib import Path
 current_dir = Path(__file__).parent.absolute()
 
-
-import pytest
-
 import torch
 
 import dotenv

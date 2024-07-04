@@ -1,5 +1,3 @@
-from typing import Any
-
 from pytorch_lightning import Callback, Trainer, LightningModule
 from pytorch_lightning.utilities import rank_zero_only
 from pytorch_lightning.utilities.parsing import AttributeDict

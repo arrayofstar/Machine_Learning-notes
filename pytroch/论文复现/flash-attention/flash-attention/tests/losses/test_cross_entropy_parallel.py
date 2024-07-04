@@ -1,15 +1,10 @@
 # Run test with:
 # torchrun --no_python --nproc_per_node=8 pytest -q -s tests/losses/test_cross_entropy_parallel.py
 
-import math
-
-import torch
-import torch.nn.functional as F
 import pytest
-
+import torch
 from apex.transformer import parallel_state
 from apex.transformer import tensor_parallel
-
 from flash_attn.losses.cross_entropy import CrossEntropyLoss
 
 is_sm8x = torch.cuda.get_device_capability('cuda')[0] >= 8

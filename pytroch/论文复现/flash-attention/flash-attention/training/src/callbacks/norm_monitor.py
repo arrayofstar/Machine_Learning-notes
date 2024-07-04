@@ -3,15 +3,14 @@
 # (6-7% slow down on GPT-2 small). Instead we only compute for iterations where we need to log, and don't
 # call .item() explicitly.
 
-from typing import Any
 from collections import OrderedDict
-
-from pytorch_lightning import Callback, Trainer
-from pytorch_lightning.utilities import rank_zero_only
-from pytorch_lightning.strategies import DeepSpeedStrategy
+from typing import Any
 
 import torch
 import torch.nn as nn
+from pytorch_lightning import Callback, Trainer
+from pytorch_lightning.strategies import DeepSpeedStrategy
+from pytorch_lightning.utilities import rank_zero_only
 
 try:
     from apex.contrib.layer_norm import FastLayerNorm

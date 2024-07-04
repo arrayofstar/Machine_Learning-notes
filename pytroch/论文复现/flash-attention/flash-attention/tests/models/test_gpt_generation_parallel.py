@@ -1,20 +1,14 @@
 # Run test with:
 # torchrun --no_python --nproc_per_node=8 pytest -q -s tests/models/test_gpt_generation_parallel.py -k "parallel"
 import os
-import re
 
-import torch
 import pytest
-
+import torch
 from einops import rearrange
-
+from flash_attn.models.gpt import GPTLMHeadModel
+from flash_attn.utils.distributed import all_gather_raw
 from transformers import GPT2Config, GPT2Tokenizer
 from transformers.models.gpt2.modeling_gpt2 import GPT2LMHeadModel as GPT2LMHeadModelHF
-
-from flash_attn.models.gpt import GPTLMHeadModel
-from flash_attn.models.gpt import remap_state_dict_hf_gpt2
-from flash_attn.utils.pretrained import state_dict_from_pretrained
-from flash_attn.utils.distributed import all_gather_raw
 
 
 # @pytest.mark.parametrize('world_size', [1, 2, 4, 8])

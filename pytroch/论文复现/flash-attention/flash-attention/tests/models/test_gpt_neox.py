@@ -1,17 +1,12 @@
 # Copyright (c) 2023, Tri Dao.
 
-import time
-
-import torch
 import pytest
-
-from transformers import GPTNeoXConfig, AutoTokenizer
-from transformers.models.gpt_neox.modeling_gpt_neox import GPTNeoXForCausalLM
-
+import torch
 from flash_attn.models.gpt import GPTLMHeadModel
 from flash_attn.models.gpt_neox import remap_state_dict_hf_gpt_neox, gpt_neox_config_to_gpt2_config
 from flash_attn.utils.pretrained import state_dict_from_pretrained
-from flash_attn.utils.generation import update_graph_cache
+from transformers import GPTNeoXConfig
+from transformers.models.gpt_neox.modeling_gpt_neox import GPTNeoXForCausalLM
 
 
 @pytest.mark.parametrize('model_name', ["EleutherAI/gpt-neox-20b"])

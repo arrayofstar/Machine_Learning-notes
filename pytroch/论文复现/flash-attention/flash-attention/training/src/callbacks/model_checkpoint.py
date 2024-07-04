@@ -1,6 +1,6 @@
 # Adapted from https://github.com/Lightning-AI/lightning/blob/master/src/pytorch_lightning/callbacks/fault_tolerance.py
-from typing import Any
 from pathlib import Path
+from typing import Any
 
 import pytorch_lightning as pl
 

@@ -1,14 +1,11 @@
 # The triton fused matmul + sqrelu is faster for fp16 but slower for bf16, compared
 # to naive implementation.
+import fused_dense_lib as fused_dense_cuda
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-from torch.cuda.amp import custom_bwd, custom_fwd
-
-import fused_dense_lib as fused_dense_cuda
-
-from flash_attn.ops.triton.linear import triton_linear_act, triton_dgrad_act
 from flash_attn.ops.activations import sqrelu_fwd, sqrelu_bwd
+from flash_attn.ops.triton.linear import triton_linear_act, triton_dgrad_act
+from torch.cuda.amp import custom_bwd, custom_fwd
 
 
 class FusedDenseSqreluDenseFunc(torch.autograd.Function):

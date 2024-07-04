@@ -1,15 +1,11 @@
 import math
-from functools import partial
 from collections import namedtuple
 
+import hydra
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-from torch.nn.modules.utils import _pair
-
-import hydra
-
 from einops import reduce, rearrange
+from torch.nn.modules.utils import _pair
 
 
 def pooling(x, pooling_mode='CLS', key_padding_mask=None, batch_first=True):

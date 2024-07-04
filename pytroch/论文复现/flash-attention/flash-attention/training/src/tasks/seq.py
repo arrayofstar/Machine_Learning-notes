@@ -1,18 +1,14 @@
-from typing import Any, List
 import inspect
+from typing import Any
 
-import torch
 import hydra
-from pytorch_lightning import LightningModule, LightningDataModule
-from torchmetrics import MetricCollection
-
 from einops import rearrange
-
 from omegaconf import OmegaConf
-
-from src.utils.utils import get_logger
+from pytorch_lightning import LightningModule, LightningDataModule
 from src.optim.param_grouping import group_parameters_for_optimizer
 from src.utils.checkpoint import load_checkpoint
+from src.utils.utils import get_logger
+from torchmetrics import MetricCollection
 
 logger = get_logger(__name__)
 

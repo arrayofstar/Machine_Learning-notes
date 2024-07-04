@@ -1,16 +1,7 @@
-import os
-import re
-import time
-
-import torch
 import pytest
-
-from einops import rearrange
-
-from transformers import GPT2Config
-
+import torch
 from flash_attn.models.gpt import GPTLMHeadModel
-from flash_attn.utils.generation import update_graph_cache
+from transformers import GPT2Config
 
 
 def get_logits(model, input_ids, max_length, teacher_outputs=None, **kwargs):

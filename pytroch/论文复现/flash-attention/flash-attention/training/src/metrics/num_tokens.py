@@ -2,7 +2,6 @@ from typing import Any, Dict, Optional
 
 import torch
 from torch import Tensor
-
 from torchmetrics import Metric
 
 

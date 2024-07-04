@@ -13,13 +13,12 @@ current_dir = Path(__file__).parent.absolute()
 import torch
 import pytest
 
-from transformers import LlamaConfig, LlamaTokenizer
+from transformers import LlamaTokenizer
 from transformers.models.llama.modeling_llama import LlamaForCausalLM
 
 from flash_attn.models.gpt import GPTLMHeadModel, combine_state_dicts_tp
 from flash_attn.models.llama import remap_state_dict_meta_llama, llama_config_to_gpt2_config
 from flash_attn.models.llama import config_from_checkpoint, state_dicts_from_checkpoint
-from flash_attn.utils.pretrained import state_dict_from_pretrained
 from flash_attn.utils.generation import update_graph_cache
 
 

@@ -2,12 +2,10 @@
 
 import math
 import re
-
 from collections import OrderedDict
 
 import torch
 import torch.nn.functional as F
-
 from transformers import GPT2Config, GPTJConfig
 
 

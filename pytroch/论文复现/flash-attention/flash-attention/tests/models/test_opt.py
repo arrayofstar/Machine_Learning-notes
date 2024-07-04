@@ -1,14 +1,10 @@
-import re
-
-import torch
 import pytest
-
-from transformers import OPTConfig
-from transformers.models.opt.modeling_opt import OPTForCausalLM
-
+import torch
 from flash_attn.models.gpt import GPTLMHeadModel
 from flash_attn.models.opt import remap_state_dict_hf_opt, opt_config_to_gpt2_config
 from flash_attn.utils.pretrained import state_dict_from_pretrained
+from transformers import OPTConfig
+from transformers.models.opt.modeling_opt import OPTForCausalLM
 
 
 @pytest.mark.parametrize('model_name', ["facebook/opt-125m", "facebook/opt-350m", "facebook/opt-1.3b"])

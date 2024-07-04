@@ -1,5 +1,3 @@
-import torch
-
 from timm.data import Mixup
 from timm.data.mixup import mixup_target
 

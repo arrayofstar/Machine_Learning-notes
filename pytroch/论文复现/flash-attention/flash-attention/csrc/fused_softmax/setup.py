@@ -1,9 +1,7 @@
 # Copied from https://github.com/NVIDIA/apex/tree/master/csrc/megatron
 # We add the case where seqlen = 4k and seqlen = 8k
-import os
 import subprocess
 
-import torch
 from setuptools import setup
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension, CUDA_HOME
 

@@ -3,7 +3,7 @@
 import time
 from typing import Any
 
-from pytorch_lightning import Callback, Trainer
+from pytorch_lightning import Callback
 from pytorch_lightning.utilities import rank_zero_only
 from pytorch_lightning.utilities.parsing import AttributeDict
 from pytorch_lightning.utilities.types import STEP_OUTPUT

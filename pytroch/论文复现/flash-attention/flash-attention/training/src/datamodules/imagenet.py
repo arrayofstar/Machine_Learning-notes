@@ -4,12 +4,10 @@ from pathlib import Path
 from typing import Any, List, Union, Callable, Optional
 
 import torch
+from pytorch_lightning import LightningDataModule
 from torch.utils.data import Dataset, DataLoader, SequentialSampler
 from torch.utils.data.dataloader import default_collate
 from torch.utils.data.distributed import DistributedSampler
-
-from pytorch_lightning import LightningDataModule
-
 from torchvision import transforms
 from torchvision.datasets import ImageFolder
 

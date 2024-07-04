@@ -1,8 +1,6 @@
-import os
 import subprocess
-from packaging.version import parse, Version
 
-import torch
+from packaging.version import parse, Version
 from setuptools import setup
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension, CUDA_HOME
 

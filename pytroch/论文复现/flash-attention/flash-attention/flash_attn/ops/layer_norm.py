@@ -1,10 +1,9 @@
 # Copyright (c) 2022, Tri Dao.
 # Adapted from https://github.com/NVIDIA/apex/blob/master/apex/contrib/layer_norm/layer_norm.py
 
+import dropout_layer_norm
 import torch
 from torch.nn import init
-
-import dropout_layer_norm
 
 
 def maybe_align(x, alignment_in_bytes=16):

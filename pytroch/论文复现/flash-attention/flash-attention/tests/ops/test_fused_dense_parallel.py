@@ -1,8 +1,6 @@
 # Run test with:
 # torchrun --no_python --nproc_per_node=8 pytest -q -s tests/ops/test_fused_dense_parallel.py
 
-import math
-
 import torch
 import torch.nn.functional as F
 import pytest
@@ -10,7 +8,6 @@ import pytest
 from apex.transformer import parallel_state
 from apex.transformer import tensor_parallel
 
-from flash_attn.ops.fused_dense import FusedDense, FusedMLP
 from flash_attn.ops.fused_dense import ColumnParallelLinear, ParallelFusedMLP
 
 is_sm8x = torch.cuda.get_device_capability('cuda')[0] >= 8

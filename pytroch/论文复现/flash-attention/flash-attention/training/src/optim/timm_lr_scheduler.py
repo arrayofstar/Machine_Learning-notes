@@ -1,5 +1,4 @@
 import torch
-from torch.optim import Optimizer
 
 from timm.scheduler import CosineLRScheduler
 

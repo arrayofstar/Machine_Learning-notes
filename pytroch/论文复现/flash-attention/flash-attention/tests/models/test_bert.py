@@ -1,19 +1,14 @@
 import re
 from collections import OrderedDict
 
-import torch
-import torch.nn.functional as F
 import pytest
-
+import torch
 from einops import rearrange
-
-from transformers import BertConfig
-from transformers.models.bert.modeling_bert import BertModel as BertModelHF
-from transformers.models.bert.modeling_bert import BertForPreTraining as BertForPreTrainingHF
-
-from flash_attn.models.bert import BertModel, BertForPreTraining
+from flash_attn.models.bert import BertForPreTraining
 from flash_attn.models.bert import remap_state_dict
 from flash_attn.utils.pretrained import state_dict_from_pretrained
+from transformers import BertConfig
+from transformers.models.bert.modeling_bert import BertForPreTraining as BertForPreTrainingHF
 
 
 @pytest.mark.parametrize('model_name', ["bert-base-uncased", "bert-large-uncased"])

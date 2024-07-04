@@ -5,11 +5,9 @@ from typing import Optional
 import torch
 import triton
 import triton.language as tl
-from torch.autograd.function import FunctionCtx
-from torch.cuda.amp import custom_fwd
+from flash_attn.ops.triton.k_activations import gelu, gelu_grad, gelu_approx, gelu_approx_grad, squared_relu, \
+    squared_relu_grad
 from triton.ops.matmul_perf_model import early_config_prune, estimate_matmul_time
-
-from flash_attn.ops.triton.k_activations import gelu, gelu_grad, gelu_approx, gelu_approx_grad, squared_relu, squared_relu_grad
 
 
 # CREDITS: Initially inspired by the Triton tutorial on matrix multiplications

@@ -11,7 +11,6 @@ from typing import Optional
 import triton
 import triton.language as tl
 
-
 _sqrt2pi = math.sqrt(2.0 / math.pi)
 _sqrt1_2 = math.sqrt(1.0 / 2)
 _gaussian_pdf_normalization = 1.0 / math.sqrt(2 * math.pi)

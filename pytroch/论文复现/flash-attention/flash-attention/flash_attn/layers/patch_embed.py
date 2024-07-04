@@ -1,13 +1,10 @@
 # We use the same API as https://github.com/rwightman/pytorch-image-models/blob/v0.6.11/timm/models/layers/patch_embed.py
 # But we use nn.Linear instead of Conv2d and it's about 8x faster.
 
-from functools import partial
-
 import torch.nn as nn
+from einops import rearrange
 from torch import _assert
 from torch.nn.modules.utils import _pair
-
-from einops import rearrange
 
 try:
     from flash_attn.ops.fused_dense import FusedDense

@@ -1,27 +1,24 @@
 # Adapted from https://github.com/huggingface/transformers/blob/master/examples/pytorch/language-modeling/run_clm.py
-from itertools import chain
-from pathlib import Path
-import pickle
-from typing import Any, List, Union
-import subprocess
 import mmap
-
+import pickle
+import subprocess
+from itertools import chain
 from multiprocessing.shared_memory import SharedMemory
+from pathlib import Path
+from typing import Any, List, Union
 
 import numpy as np
-
-import torch
+from pytorch_lightning import LightningDataModule
+from src.datamodules.datasets.detokenizer import DATASET_TOKENIZATION_REGISTRY
+from src.datamodules.datasets.lm_dataset import LMDataset
+from src.datamodules.fault_tolerant_sampler import FaultTolerantDistributedSampler
+from src.datamodules.fault_tolerant_sampler import RandomFaultTolerantSampler
+from src.utils.utils import get_logger
 from torch.utils.data.dataloader import DataLoader, Dataset
 from transformers import AutoTokenizer
+
 from datasets import load_dataset
 
-from pytorch_lightning import LightningDataModule
-
-from src.datamodules.datasets.lm_dataset import LMDataset
-from src.datamodules.fault_tolerant_sampler import RandomFaultTolerantSampler
-from src.datamodules.fault_tolerant_sampler import FaultTolerantDistributedSampler
-from src.datamodules.datasets.detokenizer import DATASET_TOKENIZATION_REGISTRY
-from src.utils.utils import get_logger
 logger = get_logger()
 
 

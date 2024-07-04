@@ -3,20 +3,15 @@
 
 import math
 
+import pytest
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-import pytest
-
-from einops import rearrange
-
-from transformers import GPT2Config
-
 from apex.transformer import parallel_state
-
-from flash_attn.models.gpt import GPTLMHeadModel, shard_state_dict_tp
+from einops import rearrange
 from flash_attn.losses.cross_entropy import CrossEntropyLoss
+from flash_attn.models.gpt import GPTLMHeadModel, shard_state_dict_tp
 from flash_attn.utils.distributed import allreduce_sequence_parallel_grad
+from transformers import GPT2Config
 
 is_sm8x = torch.cuda.get_device_capability('cuda')[0] >= 8
 

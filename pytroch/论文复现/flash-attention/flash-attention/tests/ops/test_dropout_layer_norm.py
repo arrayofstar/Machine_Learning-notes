@@ -1,16 +1,11 @@
-import math
-
+import pytest
 import torch
 import torch.nn.functional as F
-import pytest
-
 from einops import rearrange, repeat
-
 from flash_attn.ops.layer_norm import DropoutAddLayerNorm, dropout_add_layer_norm
+from flash_attn.ops.layer_norm import dropout_add_layer_norm_parallel_residual
 from flash_attn.ops.layer_norm import dropout_add_layer_norm_subset
 from flash_attn.ops.rms_norm import DropoutAddRMSNorm, dropout_add_rms_norm
-from flash_attn.ops.rms_norm import dropout_add_rms_norm_subset
-from flash_attn.ops.layer_norm import dropout_add_layer_norm_parallel_residual
 from flash_attn.ops.rms_norm import dropout_add_rms_norm_parallel_residual
 
 try:

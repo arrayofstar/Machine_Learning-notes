@@ -1,15 +1,13 @@
 # Copyright (c) 2023, Tri Dao.
 
-import math
 import json
+import math
 import re
-from pathlib import Path
-
 from collections import OrderedDict
+from pathlib import Path
 
 import torch
 import torch.nn.functional as F
-
 from transformers import GPT2Config, LlamaConfig
 
 

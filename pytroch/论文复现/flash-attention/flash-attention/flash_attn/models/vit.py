@@ -1,27 +1,19 @@
 # Copyright (c) 2022, Tri Dao.
 # Inspired by / adapted from https://github.com/rwightman/pytorch-image-models/blob/master/timm/models/vision_transformer.py
-import math
 import re
-from functools import partial
-from copy import deepcopy
-
 from collections import OrderedDict
+from functools import partial
 
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-from torch.nn.init import trunc_normal_
-
-from torchvision.ops import StochasticDepth
-
 from einops import rearrange
-
-from timm.models.helpers import named_apply
 from flash_attn.layers.patch_embed import PatchEmbed
-
+from flash_attn.modules.block import Block
 from flash_attn.modules.mha import MHA
 from flash_attn.modules.mlp import Mlp, FusedMLP
-from flash_attn.modules.block import Block
+from timm.models.helpers import named_apply
+from torch.nn.init import trunc_normal_
+from torchvision.ops import StochasticDepth
 
 try:
     from flash_attn.ops.layer_norm import dropout_add_layer_norm

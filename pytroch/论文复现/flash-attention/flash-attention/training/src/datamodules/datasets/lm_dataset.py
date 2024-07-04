@@ -2,8 +2,8 @@
 # Except we don't pad the last block and don't use overlapping eval
 # And we return both the input and the target
 import math
-import numpy as np
 
+import numpy as np
 import torch
 
 

@@ -1,12 +1,8 @@
-import math
 from functools import partial
 
+import pytest
 import torch
 import torch.nn.functional as F
-import pytest
-
-from einops import rearrange
-
 from flash_attn.ops.fused_dense import FusedDense, FusedMLP
 
 
