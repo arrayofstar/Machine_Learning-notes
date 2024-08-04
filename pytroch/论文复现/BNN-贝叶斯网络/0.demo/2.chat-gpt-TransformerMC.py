@@ -83,6 +83,7 @@ conf_95_upper = mean_preds + 1.96 * std_preds  # 95% 置信区间上界
 conf_95_lower = mean_preds - 1.96 * std_preds  # 95% 置信区间下界
 conf_75_upper = mean_preds + 1.15 * std_preds  # 75% 置信区间上界
 conf_75_lower = mean_preds - 1.15 * std_preds  # 75% 置信区间下界
+# 可以考虑再增加 25 % 置信区间下界
 
 
 import matplotlib.pyplot as plt

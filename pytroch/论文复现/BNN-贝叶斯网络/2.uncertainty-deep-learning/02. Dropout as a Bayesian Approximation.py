@@ -2,7 +2,7 @@
 # @Time    : 2024/7/12 下午5:39
 # @Author  : Dreamstar
 # @File    : 02. Dropout as a Bayesian Approximation.py
-# @Desc    : 
+# @Desc    : 很重要很重要
 # @Link    : https://github.com/cpark321/uncertainty-deep-learning/blob/master/02.%20Dropout%20as%20a%20Bayesian%20Approximation.ipynb
 
 
@@ -26,20 +26,22 @@ class SimpleModel(torch.nn.Module):
         self.dropout_rate = dropout_rate
         self.decay = decay
         self.f = torch.nn.Sequential(
-            torch.nn.Linear(1,20),
+            torch.nn.Linear(1, 20),
             torch.nn.ReLU(),
             torch.nn.Dropout(p=self.dropout_rate),
             torch.nn.Linear(20, 20),
             torch.nn.ReLU(),
             torch.nn.Dropout(p=self.dropout_rate),
-            torch.nn.Linear(20,1)
+            torch.nn.Linear(20, 1)
         )
+
     def forward(self, X):
         return self.f(X)
 
 
 def uncertainity_estimate(x, model, num_samples, l2):
-    outputs = np.hstack([model(x).cpu().detach().numpy() for i in range(num_samples)])  # n번 inference, output.shape = [20, N]
+    outputs = np.hstack(
+        [model(x).cpu().detach().numpy() for i in range(num_samples)])  # n번 inference, output.shape = [20, N]
     y_mean = outputs.mean(axis=1)
     y_variance = outputs.var(axis=1)
     tau = l2 * (1. - model.dropout_rate) / (2. * N * model.decay)
@@ -52,13 +54,12 @@ N = 200  # number of points
 min_value = -10
 max_value = 10
 
-
 x_obs = np.linspace(min_value, max_value, N)
-noise = np.random.normal(loc = 10, scale = 80, size = N)
-y_obs = x_obs**3 + noise
+noise = np.random.normal(loc=10, scale=80, size=N)
+y_obs = x_obs ** 3 + noise
 
 x_test = np.linspace(min_value - 10, max_value + 10, N)
-y_test = x_test**3 + noise
+y_test = x_test ** 3 + noise
 
 # Normalise data:
 x_mean, x_std = x_obs.mean(), x_obs.std()
@@ -68,12 +69,10 @@ y_obs = (y_obs - y_mean) / y_std
 x_test = (x_test - x_mean) / x_std
 y_test = (y_test - y_mean) / y_std
 
-
-plt.figure(figsize=(12,6))
+plt.figure(figsize=(12, 6))
 plt.plot(x_obs, y_obs)
 plt.grid()
 plt.show()
-
 
 model = SimpleModel(dropout_rate=0.5, decay=1e-6).to(device)
 criterion = torch.nn.MSELoss()
@@ -90,20 +89,19 @@ for iter in range(2000):
     if iter % 200 == 0:
         print("Iter: {}, Loss: {:.4f}".format(iter, loss.item()))
 
-
-plt.figure(figsize=(12,6))
-y_pred = model(torch.Tensor(x_obs).view(-1,1).to(device))
+plt.figure(figsize=(12, 6))
+y_pred = model(torch.Tensor(x_obs).view(-1, 1).to(device))
 plt.plot(x_obs, y_obs, ls="none", marker="o", color="0.1", alpha=0.8, label="observed")
 plt.plot(x_obs, y_pred.cpu().detach().numpy(), ls="-", color="b", label="mean")
 plt.grid()
 plt.show()
 
-
 iters_uncertainty = 200
 
 lengthscale = 0.01
 n_std = 2  # number of standard deviations to plot
-y_mean, y_std = uncertainity_estimate(torch.Tensor(x_test).view(-1, 1).to(device), model, iters_uncertainty, lengthscale)
+y_mean, y_std = uncertainity_estimate(torch.Tensor(x_test).view(-1, 1).to(device), model, iters_uncertainty,
+                                      lengthscale)
 
 plt.figure(figsize=(12, 6))
 plt.plot(x_obs, y_obs, ls="none", marker="o", color="0.1", alpha=0.8, label="observed")
@@ -118,5 +116,3 @@ for i in range(n_std):
 plt.legend()
 plt.grid()
 plt.show()
-
-
