@@ -1,0 +1,36 @@
+GPU Memory Track | 29-Sep-24-14:35:24 | Total Tensor Used Memory:0.0    Mb Total Allocated Memory:0.0    Mb
+
+
+At E:\data\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\paper_code\Pytorch-Memory-Utils\demo.py line 20: <module> Total Tensor Used Memory:0.0    Mb Total Allocated Memory:0.0    Mb
+
++ | 3 * Size:(256, 256, 3, 3)     | Memory: 6.75 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 1 * Size:(128, 64, 3, 3)      | Memory: 0.2812 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 1 * Size:(512, 256, 3, 3)     | Memory: 4.5 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 1 * Size:(64, 64, 3, 3)       | Memory: 0.1406 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 1 * Size:(64, 3, 3, 3)        | Memory: 0.0065 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 2 * Size:(128,)               | Memory: 0.0009 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 2 * Size:(64,)                | Memory: 0.0004 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 8 * Size:(512,)               | Memory: 0.0156 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 7 * Size:(512, 512, 3, 3)     | Memory: 63.0 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 1 * Size:(128, 128, 3, 3)     | Memory: 0.5625 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 1 * Size:(256, 128, 3, 3)     | Memory: 1.125 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
++ | 4 * Size:(256,)               | Memory: 0.0039 M | <class 'torch.nn.parameter.Parameter'> | torch.float32
+
+At E:\data\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\paper_code\Pytorch-Memory-Utils\demo.py line 22: <module> Total Tensor Used Memory:76.4   Mb Total Allocated Memory:76.4   Mb
+
++ | 1 * Size:(30, 3, 512, 512)    | Memory: 90.0 M | <class 'torch.Tensor'> | torch.float32
++ | 1 * Size:(60, 3, 512, 512)    | Memory: 180.0 M | <class 'torch.Tensor'> | torch.float32
++ | 1 * Size:(40, 3, 512, 512)    | Memory: 120.0 M | <class 'torch.Tensor'> | torch.float32
+
+At E:\data\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\paper_code\Pytorch-Memory-Utils\demo.py line 28: <module> Total Tensor Used Memory:466.4  Mb Total Allocated Memory:466.4  Mb
+
++ | 1 * Size:(120, 3, 512, 512)   | Memory: 360.0 M | <class 'torch.Tensor'> | torch.float32
++ | 1 * Size:(80, 3, 512, 512)    | Memory: 240.0 M | <class 'torch.Tensor'> | torch.float32
+
+At E:\data\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\paper_code\Pytorch-Memory-Utils\demo.py line 33: <module> Total Tensor Used Memory:1066.4 Mb Total Allocated Memory:1066.4 Mb
+
+- | 1 * Size:(120, 3, 512, 512)   | Memory: 360.0 M | <class 'torch.Tensor'> | torch.float32
+- | 1 * Size:(40, 3, 512, 512)    | Memory: 120.0 M | <class 'torch.Tensor'> | torch.float32
+
+At E:\data\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\paper_code\Pytorch-Memory-Utils\demo.py line 39: <module> Total Tensor Used Memory:586.4  Mb Total Allocated Memory:586.4  Mb
+
