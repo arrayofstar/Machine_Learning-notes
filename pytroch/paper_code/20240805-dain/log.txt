@@ -1,0 +1,694 @@
+F:\python\venv_Machine_Learning_notes\Scripts\python.exe F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\exp_mlp.py
+Evaluating for split:  1
+Mode =  adaptive_avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  7.2434536e-06
+Epoch  1 loss:  7.470437e-06
+Epoch  2 loss:  3.994819e-06
+Epoch  3 loss:  4.03332e-06
+Epoch  4 loss:  3.8006801e-06
+Epoch  5 loss:  6.491106e-06
+Epoch  6 loss:  2.2701129e-06
+Epoch  7 loss:  2.6256712e-06
+Epoch  8 loss:  2.2348165e-06
+Epoch  9 loss:  1.1319503e-06
+Epoch  10 loss:  2.3940934e-06
+Epoch  11 loss:  2.2227257e-06
+Epoch  12 loss:  2.4635324e-06
+Epoch  13 loss:  8.780359e-07
+Epoch  14 loss:  2.693645e-06
+Epoch  15 loss:  2.0220068e-06
+Epoch  16 loss:  2.9338444e-06
+Epoch  17 loss:  1.3981494e-06
+Epoch  18 loss:  5.6497714e-07
+Epoch  19 loss:  1.9937306e-06
+  0%|          | 0/260 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 260/260 [00:03<00:00, 78.49it/s]
+{'accuracy': 0.8672084273890143, 'precision': array([0.29956427, 0.94515897, 0.31586022]), 'recall': array([0.42113323, 0.90800659, 0.44933078]), 'f1': array([0.35009548, 0.92621036, 0.37095501]), 'precision_avg': 0.5201944840593932, 'recall_avg': 0.5928235349883585, 'f1_avg': 0.5490869514102593, 'kappa': 0.31206741643301317}
+Evaluating for split:  2
+Mode =  adaptive_avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  5.616145e-06
+Epoch  1 loss:  4.5368447e-06
+Epoch  2 loss:  4.523886e-06
+Epoch  3 loss:  3.4868194e-06
+Epoch  4 loss:  4.3947684e-06
+Epoch  5 loss:  2.4154995e-06
+Epoch  6 loss:  4.2875045e-06
+Epoch  7 loss:  2.9274927e-06
+Epoch  8 loss:  2.8349757e-06
+Epoch  9 loss:  2.0922812e-06
+Epoch  10 loss:  1.4353433e-06
+Epoch  11 loss:  2.054008e-06
+Epoch  12 loss:  1.6296743e-06
+Epoch  13 loss:  1.3456945e-06
+Epoch  14 loss:  2.0435837e-06
+Epoch  15 loss:  2.3518628e-06
+Epoch  16 loss:  9.745679e-07
+Epoch  17 loss:  1.1604187e-06
+Epoch  18 loss:  2.0170107e-06
+  0%|          | 0/335 [00:00<?, ?it/s]Epoch  19 loss:  1.8486379e-06
+F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 335/335 [00:03<00:00, 100.67it/s]
+{'accuracy': 0.8346937343592862, 'precision': array([0.42938389, 0.91572781, 0.44471624]), 'recall': array([0.4689441 , 0.88976464, 0.54775535]), 'f1': array([0.44829292, 0.90255955, 0.490887  ]), 'precision_avg': 0.5966093114116944, 'recall_avg': 0.6354880296213486, 'f1_avg': 0.6139131566744571, 'kappa': 0.4052278840897907}
+Evaluating for split:  3
+Mode =  adaptive_avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  3.7659324e-06
+Epoch  1 loss:  5.730216e-06
+Epoch  2 loss:  2.127614e-06
+Epoch  3 loss:  4.033302e-06
+Epoch  4 loss:  1.961185e-06
+Epoch  5 loss:  1.0359082e-06
+Epoch  6 loss:  1.8911884e-06
+Epoch  7 loss:  2.1003723e-06
+Epoch  8 loss:  3.7515756e-06
+Epoch  9 loss:  1.3015352e-06
+Epoch  10 loss:  1.3174079e-06
+Epoch  11 loss:  1.1362538e-06
+Epoch  12 loss:  4.2784112e-07
+Epoch  13 loss:  8.579867e-07
+Epoch  14 loss:  1.1058737e-06
+Epoch  15 loss:  8.307991e-07
+Epoch  16 loss:  9.431803e-07
+Epoch  17 loss:  3.326541e-07
+Epoch  18 loss:  7.955129e-07
+Epoch  19 loss:  1.6276442e-06
+  0%|          | 0/318 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 318/318 [00:03<00:00, 101.08it/s]
+{'accuracy': 0.8255236503097649, 'precision': array([0.35790061, 0.93644945, 0.36295252]), 'recall': array([0.53595318, 0.86106678, 0.60101207]), 'f1': array([0.42919317, 0.89717745, 0.45258684]), 'precision_avg': 0.5524341937832332, 'recall_avg': 0.6660106742913577, 'f1_avg': 0.592985819267629, 'kappa': 0.3753726942175266}
+Evaluating for split:  4
+Mode =  adaptive_avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  2.8751776e-06
+Epoch  1 loss:  2.9210075e-06
+Epoch  2 loss:  2.666375e-06
+Epoch  3 loss:  1.972602e-06
+Epoch  4 loss:  2.2664806e-06
+Epoch  5 loss:  1.7256237e-06
+Epoch  6 loss:  1.4137283e-06
+Epoch  7 loss:  1.7044455e-06
+Epoch  8 loss:  1.6061581e-06
+Epoch  9 loss:  1.6369993e-06
+Epoch  10 loss:  1.68865e-06
+Epoch  11 loss:  1.193995e-06
+Epoch  12 loss:  1.3106403e-06
+Epoch  13 loss:  9.296888e-07
+Epoch  14 loss:  1.4692383e-06
+Epoch  15 loss:  1.4063418e-06
+Epoch  16 loss:  1.0672021e-06
+Epoch  17 loss:  1.056773e-06
+Epoch  18 loss:  9.197645e-07
+Epoch  19 loss:  7.406464e-07
+  0%|          | 0/366 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 366/366 [00:03<00:00, 108.33it/s]
+{'accuracy': 0.8427862611745583, 'precision': array([0.39044792, 0.94345223, 0.37096079]), 'recall': array([0.55804088, 0.87575823, 0.61809045]), 'f1': array([0.45943801, 0.90834576, 0.46365105]), 'precision_avg': 0.5682869803442463, 'recall_avg': 0.6839631888017106, 'f1_avg': 0.6104782726868715, 'kappa': 0.4016059939905665}
+Evaluating for split:  5
+Mode =  adaptive_avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  3.555805e-06
+Epoch  1 loss:  2.3063685e-06
+Epoch  2 loss:  2.3100893e-06
+Epoch  3 loss:  1.7254918e-06
+Epoch  4 loss:  2.4908868e-06
+Epoch  5 loss:  1.7441206e-06
+Epoch  6 loss:  1.383746e-06
+Epoch  7 loss:  1.1202055e-06
+Epoch  8 loss:  1.2589694e-06
+Epoch  9 loss:  2.798532e-06
+Epoch  10 loss:  1.0466242e-06
+Epoch  11 loss:  8.094114e-07
+Epoch  12 loss:  1.095852e-06
+Epoch  13 loss:  1.2477191e-06
+Epoch  14 loss:  1.3688848e-06
+Epoch  15 loss:  5.090727e-07
+Epoch  16 loss:  8.1532363e-07
+Epoch  17 loss:  8.189251e-07
+Epoch  18 loss:  1.1406261e-06
+Epoch  19 loss:  6.1317917e-07
+  0%|          | 0/349 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 349/349 [00:03<00:00, 100.15it/s]
+{'accuracy': 0.8337593040982871, 'precision': array([0.35890545, 0.94477951, 0.35967927]), 'recall': array([0.57811885, 0.86416317, 0.61689587]), 'f1': array([0.44287006, 0.90267498, 0.45441389]), 'precision_avg': 0.5544547401872099, 'recall_avg': 0.686392630420506, 'f1_avg': 0.5999863134531526, 'kappa': 0.38705555950402715}
+Evaluating for split:  6
+Mode =  adaptive_avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  3.0456388e-06
+Epoch  1 loss:  1.960009e-06
+Epoch  2 loss:  2.0656357e-06
+Epoch  3 loss:  1.940758e-06
+Epoch  4 loss:  1.4547845e-06
+Epoch  5 loss:  1.1682145e-06
+Epoch  6 loss:  1.3554715e-06
+Epoch  7 loss:  7.9158235e-07
+Epoch  8 loss:  1.2443872e-06
+Epoch  9 loss:  1.1608125e-06
+Epoch  10 loss:  1.310986e-06
+Epoch  11 loss:  9.034204e-07
+Epoch  12 loss:  8.064309e-07
+Epoch  13 loss:  1.4918279e-06
+Epoch  14 loss:  7.735779e-07
+Epoch  15 loss:  1.5824189e-06
+Epoch  16 loss:  8.776735e-07
+Epoch  17 loss:  8.452415e-07
+Epoch  18 loss:  6.1207413e-07
+Epoch  19 loss:  1.0396719e-06
+  0%|          | 0/465 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 465/465 [00:03<00:00, 130.33it/s]
+{'accuracy': 0.8779548740710851, 'precision': array([0.35439815, 0.96916542, 0.32605667]), 'recall': array([0.62771628, 0.89706766, 0.66857143]), 'f1': array([0.4530256 , 0.93172387, 0.43833906]), 'precision_avg': 0.5498734114963194, 'recall_avg': 0.731118454196662, 'f1_avg': 0.607696174428951, 'kappa': 0.40390230794459747}
+Evaluating for split:  7
+Mode =  adaptive_avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  1.8419728e-06
+Epoch  1 loss:  1.5107998e-06
+Epoch  2 loss:  1.6076119e-06
+Epoch  3 loss:  1.3120756e-06
+Epoch  4 loss:  2.3694167e-06
+Epoch  5 loss:  1.2538095e-06
+Epoch  6 loss:  1.2462914e-06
+Epoch  7 loss:  1.1174986e-06
+Epoch  8 loss:  1.1566316e-06
+Epoch  9 loss:  1.1573746e-06
+Epoch  10 loss:  1.0719505e-06
+Epoch  11 loss:  1.2380794e-06
+Epoch  12 loss:  8.482559e-07
+Epoch  13 loss:  1.109002e-06
+Epoch  14 loss:  5.8567633e-07
+Epoch  15 loss:  9.3086925e-07
+Epoch  16 loss:  8.780971e-07
+Epoch  17 loss:  1.122041e-06
+Epoch  18 loss:  1.1108652e-06
+Epoch  19 loss:  8.0559215e-07
+  0%|          | 0/449 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 449/449 [00:03<00:00, 120.70it/s]
+{'accuracy': 0.8714146477304372, 'precision': array([0.35521886, 0.96447169, 0.3420354 ]), 'recall': array([0.63746224, 0.89345741, 0.62238325]), 'f1': array([0.45621622, 0.92760739, 0.44146202]), 'precision_avg': 0.5539086471683449, 'recall_avg': 0.7177676333064954, 'f1_avg': 0.60842854135816, 'kappa': 0.40375014443243407}
+Evaluating for split:  8
+Mode =  adaptive_avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  1.7588035e-06
+Epoch  1 loss:  1.132534e-06
+Epoch  2 loss:  9.2014557e-07
+Epoch  3 loss:  8.6772997e-07
+Epoch  4 loss:  2.8846548e-06
+Epoch  5 loss:  1.0577901e-06
+Epoch  6 loss:  8.363375e-07
+Epoch  7 loss:  5.0715056e-07
+Epoch  8 loss:  7.593058e-07
+Epoch  9 loss:  7.106953e-07
+Epoch  10 loss:  3.5615767e-07
+Epoch  11 loss:  3.215602e-07
+Epoch  12 loss:  1.0671629e-06
+Epoch  13 loss:  1.144776e-06
+Epoch  14 loss:  4.8150036e-07
+Epoch  15 loss:  9.433128e-07
+Epoch  16 loss:  6.945467e-07
+Epoch  17 loss:  8.3181345e-07
+Epoch  18 loss:  5.54229e-07
+Epoch  19 loss:  6.6255086e-07
+  0%|          | 0/288 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 288/288 [00:03<00:00, 93.17it/s]
+{'accuracy': 0.864208951163107, 'precision': array([0.35031847, 0.96491625, 0.31068931]), 'recall': array([0.62618596, 0.88514816, 0.6386037 ]), 'f1': array([0.44928523, 0.92331255, 0.41801075]), 'precision_avg': 0.5419746779081637, 'recall_avg': 0.7166459389275851, 'f1_avg': 0.5968695106602045, 'kappa': 0.3874299588597052}
+----------
+Mode:  mlp_std
+Precision =  0.5547170557948257
+Recall =  0.678776260569253
+F1 =  0.5974305924924607
+Cohen =  0.38455149493395757
+([0.8672084273890143, 0.8346937343592862, 0.8255236503097649, 0.8427862611745583, 0.8337593040982871, 0.8779548740710851, 0.8714146477304372, 0.864208951163107], [0.5201944840593932, 0.5966093114116944, 0.5524341937832332, 0.5682869803442463, 0.5544547401872099, 0.5498734114963194, 0.5539086471683449, 0.5419746779081637], [0.5928235349883585, 0.6354880296213486, 0.6660106742913577, 0.6839631888017106, 0.686392630420506, 0.731118454196662, 0.7177676333064954, 0.7166459389275851], [0.5490869514102593, 0.6139131566744571, 0.592985819267629, 0.6104782726868715, 0.5999863134531526, 0.607696174428951, 0.60842854135816, 0.5968695106602045], [0.31206741643301317, 0.4052278840897907, 0.3753726942175266, 0.4016059939905665, 0.38705555950402715, 0.40390230794459747, 0.40375014443243407, 0.3874299588597052])
+Evaluating for split:  1
+Mode =  avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  0.00042330724
+Epoch  1 loss:  5.5184963e-05
+Epoch  2 loss:  2.6922104e-05
+Epoch  3 loss:  1.3034291e-05
+Epoch  4 loss:  1.2367408e-05
+Epoch  5 loss:  2.5233654e-05
+Epoch  6 loss:  1.0883855e-05
+Epoch  7 loss:  1.3659942e-05
+Epoch  8 loss:  8.869861e-06
+Epoch  9 loss:  6.1365918e-06
+Epoch  10 loss:  1.2230025e-05
+Epoch  11 loss:  8.201127e-06
+Epoch  12 loss:  2.1010446e-05
+Epoch  13 loss:  2.551855e-06
+Epoch  14 loss:  6.3183616e-06
+Epoch  15 loss:  1.1217069e-05
+Epoch  16 loss:  7.111159e-06
+Epoch  17 loss:  1.2212654e-05
+Epoch  18 loss:  3.4608674e-06
+  0%|          | 0/260 [00:00<?, ?it/s]Epoch  19 loss:  8.865686e-06
+F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 260/260 [00:03<00:00, 86.28it/s]
+{'accuracy': 0.8345823927765237, 'precision': array([0.21126761, 0.94350927, 0.32480818]), 'recall': array([0.58575804, 0.87169687, 0.3237731 ]), 'f1': array([0.31053379, 0.90618257, 0.32428982]), 'precision_avg': 0.4931950207483094, 'recall_avg': 0.593742671185263, 'f1_avg': 0.5136687256523139, 'kappa': 0.2568096750914395}
+Evaluating for split:  2
+Mode =  avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  0.0001354494
+Epoch  1 loss:  3.6355646e-05
+Epoch  2 loss:  1.6557293e-05
+Epoch  3 loss:  1.3701672e-05
+Epoch  4 loss:  1.16493475e-05
+Epoch  5 loss:  1.5632078e-05
+Epoch  6 loss:  4.381996e-06
+Epoch  7 loss:  1.4952704e-05
+Epoch  8 loss:  1.2337398e-05
+Epoch  9 loss:  1.4749952e-05
+Epoch  10 loss:  8.151539e-06
+Epoch  11 loss:  1.3690206e-05
+Epoch  12 loss:  6.301435e-06
+Epoch  13 loss:  4.759858e-06
+Epoch  14 loss:  4.656882e-06
+Epoch  15 loss:  8.847666e-06
+Epoch  16 loss:  6.9906605e-06
+Epoch  17 loss:  1.1561401e-05
+Epoch  18 loss:  1.5513286e-05
+Epoch  19 loss:  6.3433336e-06
+  0%|          | 0/335 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 335/335 [00:03<00:00, 105.26it/s]
+{'accuracy': 0.6979675842552097, 'precision': array([0.24887244, 0.93993392, 0.33068451]), 'recall': array([0.74258109, 0.69291188, 0.71467309]), 'f1': array([0.37280208, 0.79773776, 0.45215402]), 'precision_avg': 0.5064969575194401, 'recall_avg': 0.7167220207024423, 'f1_avg': 0.5408979547394751, 'kappa': 0.305468959629984}
+Evaluating for split:  3
+Mode =  avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  7.6954646e-05
+Epoch  1 loss:  8.498505e-06
+Epoch  2 loss:  9.5322633e-07
+Epoch  3 loss:  3.1421125e-06
+Epoch  4 loss:  1.2548601e-05
+Epoch  5 loss:  6.81714e-06
+Epoch  6 loss:  2.5882699e-05
+Epoch  7 loss:  3.9657807e-06
+Epoch  8 loss:  2.5740342e-06
+Epoch  9 loss:  9.835211e-06
+Epoch  10 loss:  7.6735205e-06
+Epoch  11 loss:  5.841159e-07
+Epoch  12 loss:  3.240781e-06
+Epoch  13 loss:  3.8818935e-06
+Epoch  14 loss:  4.6866744e-06
+Epoch  15 loss:  4.1113876e-06
+Epoch  16 loss:  1.6014441e-05
+Epoch  17 loss:  6.1738115e-06
+Epoch  18 loss:  8.802905e-06
+  0%|          | 0/318 [00:00<?, ?it/s]Epoch  19 loss:  4.333772e-06
+F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 318/318 [00:03<00:00, 100.26it/s]
+{'accuracy': 0.45837840495623955, 'precision': array([0.12704726, 0.95513577, 0.22930166]), 'recall': array([0.90802676, 0.40772785, 0.74386921]), 'f1': array([0.2229064 , 0.57149585, 0.35054572]), 'precision_avg': 0.43716156390088995, 'recall_avg': 0.6865412703683994, 'f1_avg': 0.3816493250231497, 'kappa': 0.14468474745077708}
+Evaluating for split:  4
+Mode =  avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  2.5027626e-05
+Epoch  1 loss:  1.0609742e-05
+Epoch  2 loss:  6.761857e-06
+Epoch  3 loss:  5.181095e-06
+Epoch  4 loss:  4.1287494e-06
+Epoch  5 loss:  3.4983408e-05
+Epoch  6 loss:  5.1788497e-06
+Epoch  7 loss:  5.4424345e-06
+Epoch  8 loss:  1.6014335e-05
+Epoch  9 loss:  3.481828e-06
+Epoch  10 loss:  4.7617896e-06
+Epoch  11 loss:  2.8973277e-06
+Epoch  12 loss:  4.9014793e-06
+Epoch  13 loss:  3.1079342e-06
+Epoch  14 loss:  6.202405e-06
+Epoch  15 loss:  5.1880834e-06
+Epoch  16 loss:  3.185387e-06
+Epoch  17 loss:  3.62174e-06
+Epoch  18 loss:  2.5256697e-06
+Epoch  19 loss:  3.8094508e-06
+  0%|          | 0/366 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 366/366 [00:03<00:00, 111.42it/s]
+{'accuracy': 0.7777492621583473, 'precision': array([0.31077054, 0.94688813, 0.27492488]), 'recall': array([0.56305438, 0.79492013, 0.72254128]), 'f1': array([0.40049376, 0.86427473, 0.39829838]), 'precision_avg': 0.5108611861996645, 'recall_avg': 0.6935052611848641, 'f1_avg': 0.5543556239665676, 'kappa': 0.32164573006087505}
+Evaluating for split:  5
+Mode =  avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  1.2991284e-05
+Epoch  1 loss:  4.1215017e-06
+Epoch  2 loss:  6.427516e-06
+Epoch  3 loss:  7.597761e-06
+Epoch  4 loss:  8.707178e-06
+Epoch  5 loss:  5.0989884e-06
+Epoch  6 loss:  4.4810754e-06
+Epoch  7 loss:  3.575671e-06
+Epoch  8 loss:  2.8884733e-06
+Epoch  9 loss:  1.8240414e-06
+Epoch  10 loss:  5.3865947e-06
+Epoch  11 loss:  2.9653127e-06
+Epoch  12 loss:  4.090963e-06
+Epoch  13 loss:  6.4145966e-06
+Epoch  14 loss:  2.771151e-06
+Epoch  15 loss:  3.9643282e-06
+Epoch  16 loss:  3.8377425e-06
+Epoch  17 loss:  2.7730669e-06
+Epoch  18 loss:  5.1606276e-06
+  0%|          | 0/349 [00:00<?, ?it/s]Epoch  19 loss:  3.1463599e-06
+F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 349/349 [00:03<00:00, 109.83it/s]
+{'accuracy': 0.7544614832750426, 'precision': array([0.28601808, 0.95185478, 0.25912709]), 'recall': array([0.635183  , 0.76294347, 0.74184676]), 'f1': array([0.39442815, 0.84699338, 0.38409114]), 'precision_avg': 0.498999981202043, 'recall_avg': 0.7133244086560321, 'f1_avg': 0.5418375589814235, 'kappa': 0.30699202452603824}
+Evaluating for split:  6
+Mode =  avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  7.496699e-06
+Epoch  1 loss:  2.4522196e-06
+Epoch  2 loss:  9.487321e-06
+Epoch  3 loss:  1.7378061e-06
+Epoch  4 loss:  3.2449086e-06
+Epoch  5 loss:  8.134691e-06
+Epoch  6 loss:  3.6880672e-06
+Epoch  7 loss:  2.9633884e-06
+Epoch  8 loss:  1.1843947e-05
+Epoch  9 loss:  2.1089554e-06
+Epoch  10 loss:  3.7979394e-06
+Epoch  11 loss:  2.5778597e-06
+Epoch  12 loss:  3.2605803e-06
+Epoch  13 loss:  3.3409806e-06
+Epoch  14 loss:  1.4752609e-06
+Epoch  15 loss:  3.7655525e-06
+Epoch  16 loss:  1.8942576e-06
+Epoch  17 loss:  2.9458472e-06
+Epoch  18 loss:  2.8313689e-06
+  0%|          | 0/465 [00:00<?, ?it/s]Epoch  19 loss:  3.0788556e-06
+F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 465/465 [00:03<00:00, 136.71it/s]
+{'accuracy': 0.8455899660378627, 'precision': array([0.30329877, 0.97053142, 0.26438033]), 'recall': array([0.6596966 , 0.85964433, 0.69380952]), 'f1': array([0.41554752, 0.91172865, 0.3828669 ]), 'precision_avg': 0.5127368419368595, 'recall_avg': 0.7377168178603228, 'f1_avg': 0.5700476916984906, 'kappa': 0.3494585003080303}
+Evaluating for split:  7
+Mode =  avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  3.6535087e-06
+Epoch  1 loss:  2.865441e-06
+Epoch  2 loss:  2.2076042e-06
+Epoch  3 loss:  2.0029154e-06
+Epoch  4 loss:  2.8940676e-06
+Epoch  5 loss:  3.683701e-06
+Epoch  6 loss:  3.2490195e-06
+Epoch  7 loss:  2.6432854e-06
+Epoch  8 loss:  2.2111947e-06
+Epoch  9 loss:  3.3559052e-06
+Epoch  10 loss:  2.0617058e-06
+Epoch  11 loss:  2.8729637e-06
+Epoch  12 loss:  2.239438e-06
+Epoch  13 loss:  2.8235474e-06
+Epoch  14 loss:  3.1738123e-06
+Epoch  15 loss:  3.4201582e-06
+Epoch  16 loss:  1.807899e-06
+Epoch  17 loss:  2.7803096e-06
+Epoch  18 loss:  2.1726835e-06
+Epoch  19 loss:  3.459289e-06
+  0%|          | 0/449 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 449/449 [00:03<00:00, 130.28it/s]
+{'accuracy': 0.9104358117516013, 'precision': array([0.55555556, 0.93063081, 0.41852182]), 'recall': array([0.00647389, 0.97531099, 0.3784219 ]), 'f1': array([0.01279863, 0.95244719, 0.397463  ]), 'precision_avg': 0.6349027274438747, 'recall_avg': 0.45340225847370136, 'f1_avg': 0.45423627540964134, 'kappa': 0.24166048217852765}
+Evaluating for split:  8
+Mode =  avg
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  3.9485158e-06
+Epoch  1 loss:  2.9255748e-06
+Epoch  2 loss:  3.801305e-06
+Epoch  3 loss:  2.8273978e-05
+Epoch  4 loss:  1.220743e-06
+Epoch  5 loss:  7.6012475e-07
+Epoch  6 loss:  2.8573893e-06
+Epoch  7 loss:  4.3716577e-06
+Epoch  8 loss:  2.4384415e-06
+Epoch  9 loss:  1.4465305e-06
+Epoch  10 loss:  9.019801e-07
+Epoch  11 loss:  1.8976696e-06
+Epoch  12 loss:  3.031777e-06
+Epoch  13 loss:  1.0642135e-06
+Epoch  14 loss:  1.8700282e-06
+Epoch  15 loss:  1.0171203e-06
+Epoch  16 loss:  1.5324239e-06
+Epoch  17 loss:  2.635068e-06
+Epoch  18 loss:  4.353704e-06
+  0%|          | 0/288 [00:00<?, ?it/s]Epoch  19 loss:  1.1746873e-06
+F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 288/288 [00:03<00:00, 93.81it/s]
+{'accuracy': 0.7609849000136036, 'precision': array([0.21417069, 0.97244377, 0.22224581]), 'recall': array([0.75711575, 0.76308842, 0.71663244]), 'f1': array([0.33389121, 0.85513894, 0.33927414]), 'precision_avg': 0.4696200908531593, 'recall_avg': 0.7456122053070092, 'f1_avg': 0.5094347663205531, 'kappa': 0.2716711452726922}
+----------
+Mode:  mlp_sample_avg
+Precision =  0.5079967962255301
+Recall =  0.6675708642172543
+F1 =  0.5082659902239518
+Cohen =  0.2747989080647955
+([0.8345823927765237, 0.6979675842552097, 0.45837840495623955, 0.7777492621583473, 0.7544614832750426, 0.8455899660378627, 0.9104358117516013, 0.7609849000136036], [0.4931950207483094, 0.5064969575194401, 0.43716156390088995, 0.5108611861996645, 0.498999981202043, 0.5127368419368595, 0.6349027274438747, 0.4696200908531593], [0.593742671185263, 0.7167220207024423, 0.6865412703683994, 0.6935052611848641, 0.7133244086560321, 0.7377168178603228, 0.45340225847370136, 0.7456122053070092], [0.5136687256523139, 0.5408979547394751, 0.3816493250231497, 0.5543556239665676, 0.5418375589814235, 0.5700476916984906, 0.45423627540964134, 0.5094347663205531], [0.2568096750914395, 0.305468959629984, 0.14468474745077708, 0.32164573006087505, 0.30699202452603824, 0.3494585003080303, 0.24166048217852765, 0.2716711452726922])
+Evaluating for split:  1
+Mode =  full
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  3.5292971e-06
+Epoch  1 loss:  1.425082e-06
+Epoch  2 loss:  3.8235485e-06
+Epoch  3 loss:  2.0776179e-06
+Epoch  4 loss:  1.7485454e-06
+Epoch  5 loss:  1.9549736e-06
+Epoch  6 loss:  1.134879e-06
+Epoch  7 loss:  2.404161e-06
+Epoch  8 loss:  7.3696435e-07
+Epoch  9 loss:  2.4442395e-06
+Epoch  10 loss:  1.0989667e-06
+Epoch  11 loss:  4.8252775e-07
+Epoch  12 loss:  1.036643e-06
+Epoch  13 loss:  6.682967e-07
+Epoch  14 loss:  5.512357e-07
+Epoch  15 loss:  2.4189444e-07
+Epoch  16 loss:  1.1436643e-06
+Epoch  17 loss:  7.2265516e-07
+Epoch  18 loss:  2.2778885e-07
+  0%|          | 0/260 [00:00<?, ?it/s]Epoch  19 loss:  3.260765e-07
+F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 260/260 [00:03<00:00, 72.60it/s]
+{'accuracy': 0.9000451467268623, 'precision': array([0.43205575, 0.95760303, 0.44073884]), 'recall': array([0.56967841, 0.93248764, 0.54748247]), 'f1': array([0.49141347, 0.94487847, 0.48834565]), 'precision_avg': 0.6101325404328075, 'recall_avg': 0.6832161748049792, 'f1_avg': 0.641545865800226, 'kappa': 0.4527583797975271}
+Evaluating for split:  2
+Mode =  full
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  2.9176615e-06
+Epoch  1 loss:  3.101292e-06
+Epoch  2 loss:  1.296579e-06
+Epoch  3 loss:  1.9759282e-06
+Epoch  4 loss:  1.8513211e-06
+Epoch  5 loss:  1.7015817e-06
+Epoch  6 loss:  1.8720694e-06
+Epoch  7 loss:  1.7744435e-06
+Epoch  8 loss:  1.107285e-06
+Epoch  9 loss:  5.858462e-07
+Epoch  10 loss:  1.2437008e-06
+Epoch  11 loss:  9.453551e-07
+Epoch  12 loss:  1.5633599e-07
+Epoch  13 loss:  7.3388765e-07
+Epoch  14 loss:  3.9579672e-07
+Epoch  15 loss:  1.0473561e-06
+Epoch  16 loss:  3.1157612e-07
+Epoch  17 loss:  3.1025894e-07
+Epoch  18 loss:  5.152816e-07
+Epoch  19 loss:  5.613225e-07
+  0%|          | 0/335 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 335/335 [00:03<00:00, 98.76it/s]
+{'accuracy': 0.8735177865612648, 'precision': array([0.54782904, 0.93115371, 0.56619256]), 'recall': array([0.55728088, 0.92129174, 0.62368183]), 'f1': array([0.55251454, 0.92619647, 0.59354839]), 'precision_avg': 0.6817251015542661, 'recall_avg': 0.7007514834432499, 'f1_avg': 0.6907531323465382, 'kappa': 0.5246613299289445}
+Evaluating for split:  3
+Mode =  full
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  3.851128e-06
+Epoch  1 loss:  2.262919e-06
+Epoch  2 loss:  4.3125115e-06
+Epoch  3 loss:  9.995336e-06
+Epoch  4 loss:  5.7535374e-07
+Epoch  5 loss:  1.0195433e-06
+Epoch  6 loss:  1.389853e-06
+Epoch  7 loss:  6.0995137e-07
+Epoch  8 loss:  1.1282368e-06
+Epoch  9 loss:  3.0282106e-07
+Epoch  10 loss:  2.589403e-07
+Epoch  11 loss:  6.813645e-08
+Epoch  12 loss:  2.2324234e-07
+Epoch  13 loss:  6.6872707e-07
+Epoch  14 loss:  4.176725e-07
+Epoch  15 loss:  1.3917419e-07
+Epoch  16 loss:  6.706059e-07
+Epoch  17 loss:  2.1050566e-06
+Epoch  18 loss:  1.2661778e-08
+  0%|          | 0/318 [00:00<?, ?it/s]Epoch  19 loss:  1.18561005e-07
+F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 318/318 [00:03<00:00, 95.36it/s]
+{'accuracy': 0.8769790539876094, 'precision': array([0.48      , 0.94481102, 0.50768738]), 'recall': array([0.60200669, 0.91409772, 0.61697158]), 'f1': array([0.53412463, 0.92920064, 0.55701986]), 'precision_avg': 0.6441661334388257, 'recall_avg': 0.7110253304276289, 'f1_avg': 0.6734483760784536, 'kappa': 0.49772858084905824}
+Evaluating for split:  4
+Mode =  full
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  2.3151142e-06
+Epoch  1 loss:  1.8747213e-06
+Epoch  2 loss:  1.8628541e-06
+Epoch  3 loss:  1.2635959e-06
+Epoch  4 loss:  7.26893e-07
+Epoch  5 loss:  1.5282618e-06
+Epoch  6 loss:  7.8621537e-07
+Epoch  7 loss:  1.2587146e-06
+Epoch  8 loss:  5.94403e-07
+Epoch  9 loss:  4.1344722e-07
+Epoch  10 loss:  1.2040208e-06
+Epoch  11 loss:  3.5549215e-07
+Epoch  12 loss:  4.6444293e-07
+Epoch  13 loss:  3.6078887e-07
+Epoch  14 loss:  2.889825e-07
+Epoch  15 loss:  3.9107312e-07
+Epoch  16 loss:  6.9919815e-07
+Epoch  17 loss:  3.7049318e-07
+Epoch  18 loss:  1.2770914e-07
+  0%|          | 0/366 [00:00<?, ?it/s]Epoch  19 loss:  1.6609049e-07
+F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 366/366 [00:03<00:00, 103.69it/s]
+{'accuracy': 0.8928097865605885, 'precision': array([0.54135091, 0.952613  , 0.51042559]), 'recall': array([0.633629  , 0.92597694, 0.64142139]), 'f1': array([0.58386638, 0.93910614, 0.56847463]), 'precision_avg': 0.668129832215074, 'recall_avg': 0.7336757795539072, 'f1_avg': 0.6971490503227638, 'kappa': 0.5353319491438812}
+Evaluating for split:  5
+Mode =  full
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  1.8523865e-06
+Epoch  1 loss:  9.990279e-07
+Epoch  2 loss:  1.8796661e-06
+Epoch  3 loss:  7.787734e-07
+Epoch  4 loss:  1.1430234e-06
+Epoch  5 loss:  7.5986696e-07
+Epoch  6 loss:  6.339163e-07
+Epoch  7 loss:  8.07847e-07
+Epoch  8 loss:  5.4674285e-07
+Epoch  9 loss:  5.620905e-07
+Epoch  10 loss:  6.003237e-07
+Epoch  11 loss:  7.75727e-07
+Epoch  12 loss:  3.6739894e-07
+Epoch  13 loss:  3.648698e-07
+Epoch  14 loss:  3.3558936e-07
+Epoch  15 loss:  1.950349e-06
+Epoch  16 loss:  3.6349806e-07
+Epoch  17 loss:  2.669458e-07
+Epoch  18 loss:  6.6780694e-07
+Epoch  19 loss:  2.4462568e-07
+  0%|          | 0/349 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 349/349 [00:03<00:00, 98.56it/s]
+{'accuracy': 0.8884404986099901, 'precision': array([0.50220403, 0.9522713 , 0.51089664]), 'recall': array([0.62770563, 0.92089681, 0.64479371]), 'f1': array([0.55798496, 0.9363213 , 0.57008859]), 'precision_avg': 0.6551239892715777, 'recall_avg': 0.7311320491290804, 'f1_avg': 0.6881316152659939, 'kappa': 0.5206814319834353}
+Evaluating for split:  6
+Mode =  full
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  1.444897e-06
+Epoch  1 loss:  1.3864791e-06
+Epoch  2 loss:  7.1108417e-07
+Epoch  3 loss:  1.3476006e-06
+Epoch  4 loss:  6.0092214e-07
+Epoch  5 loss:  7.5336135e-07
+Epoch  6 loss:  5.664722e-07
+Epoch  7 loss:  8.1008045e-07
+Epoch  8 loss:  6.0733873e-07
+Epoch  9 loss:  5.0789384e-07
+Epoch  10 loss:  2.5925075e-07
+Epoch  11 loss:  4.9377746e-07
+Epoch  12 loss:  2.6150897e-07
+Epoch  13 loss:  4.244982e-07
+Epoch  14 loss:  3.7357896e-07
+Epoch  15 loss:  1.4044838e-07
+Epoch  16 loss:  1.936196e-07
+Epoch  17 loss:  2.3768429e-07
+Epoch  18 loss:  1.3283517e-07
+  0%|          | 0/465 [00:00<?, ?it/s]Epoch  19 loss:  2.2059736e-07
+F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 465/465 [00:03<00:00, 127.13it/s]
+{'accuracy': 0.9295033457749083, 'precision': array([0.54712042, 0.96808569, 0.5122807 ]), 'recall': array([0.599836  , 0.95575092, 0.62571429]), 'f1': array([0.57226677, 0.96187877, 0.56334405]), 'precision_avg': 0.6758289384659372, 'recall_avg': 0.727100402608689, 'f1_avg': 0.6991631964024688, 'kappa': 0.5431454775265059}
+Evaluating for split:  7
+Mode =  full
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  1.0130078e-06
+Epoch  1 loss:  1.030454e-06
+Epoch  2 loss:  9.983462e-07
+Epoch  3 loss:  7.0825547e-07
+Epoch  4 loss:  8.876014e-07
+Epoch  5 loss:  5.4280815e-07
+Epoch  6 loss:  7.4364476e-07
+Epoch  7 loss:  4.4428054e-07
+Epoch  8 loss:  5.8168115e-07
+Epoch  9 loss:  3.9977306e-07
+Epoch  10 loss:  3.7405994e-07
+Epoch  11 loss:  3.3827627e-07
+Epoch  12 loss:  2.1367887e-07
+Epoch  13 loss:  3.7509116e-07
+Epoch  14 loss:  2.4659715e-07
+Epoch  15 loss:  2.1708401e-07
+Epoch  16 loss:  3.006707e-07
+Epoch  17 loss:  2.4761238e-07
+Epoch  18 loss:  3.0998459e-07
+Epoch  19 loss:  1.03716786e-07
+  0%|          | 0/449 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 449/449 [00:03<00:00, 121.25it/s]
+{'accuracy': 0.9131161236424394, 'precision': array([0.49295302, 0.96577858, 0.47286585]), 'recall': array([0.6340095 , 0.93901814, 0.62439614]), 'f1': array([0.55465358, 0.95221038, 0.53816794]), 'precision_avg': 0.6438658167480167, 'recall_avg': 0.7324745890771508, 'f1_avg': 0.6816772982528289, 'kappa': 0.5142049996424884}
+Evaluating for split:  8
+Mode =  full
+F:\python\venv_Machine_Learning_notes\lib\site-packages\torch\_tensor.py:775: UserWarning: non-inplace resize is deprecated
+  warnings.warn("non-inplace resize is deprecated")
+Epoch  0 loss:  9.921054e-07
+Epoch  1 loss:  1.2458415e-06
+Epoch  2 loss:  6.8060683e-07
+Epoch  3 loss:  4.26712e-07
+Epoch  4 loss:  2.8169453e-07
+Epoch  5 loss:  5.000793e-07
+Epoch  6 loss:  2.583474e-07
+Epoch  7 loss:  5.0027415e-07
+Epoch  8 loss:  2.6260727e-07
+Epoch  9 loss:  3.0844848e-07
+Epoch  10 loss:  1.10140995e-07
+Epoch  11 loss:  4.849868e-07
+Epoch  12 loss:  2.5106263e-07
+Epoch  13 loss:  1.5625436e-07
+Epoch  14 loss:  2.1080194e-07
+Epoch  15 loss:  1.0047613e-07
+Epoch  16 loss:  1.1811845e-07
+Epoch  17 loss:  2.870014e-07
+Epoch  18 loss:  3.772796e-07
+Epoch  19 loss:  7.784293e-08
+  0%|          | 0/288 [00:00<?, ?it/s]F:\mf\BaiduSyncdisk\mf\python\10\1.git\Machine_Learning-notes\pytroch\论文复现\dain\train_utils.py:50: UserWarning: volatile was removed and now has no effect. Use `with torch.no_grad():` instead.
+  inputs, targets = Variable(inputs, volatile=True), Variable(targets)
+100%|██████████| 288/288 [00:03<00:00, 84.12it/s]
+{'accuracy': 0.9162562916609985, 'precision': array([0.51677852, 0.96466881, 0.46666667]), 'recall': array([0.58444023, 0.94432415, 0.62765229]), 'f1': array([0.54853072, 0.95438807, 0.53531816]), 'precision_avg': 0.6493713327025442, 'recall_avg': 0.7188055562029381, 'f1_avg': 0.679412315071879, 'kappa': 0.5136954911852687}
+----------
+Mode:  mlp_full
+Precision =  0.6535429606036312
+Recall =  0.7172726706559529
+F1 =  0.6814101061926441
+Cohen =  0.5127759550071387
+([0.9000451467268623, 0.8735177865612648, 0.8769790539876094, 0.8928097865605885, 0.8884404986099901, 0.9295033457749083, 0.9131161236424394, 0.9162562916609985], [0.6101325404328075, 0.6817251015542661, 0.6441661334388257, 0.668129832215074, 0.6551239892715777, 0.6758289384659372, 0.6438658167480167, 0.6493713327025442], [0.6832161748049792, 0.7007514834432499, 0.7110253304276289, 0.7336757795539072, 0.7311320491290804, 0.727100402608689, 0.7324745890771508, 0.7188055562029381], [0.641545865800226, 0.6907531323465382, 0.6734483760784536, 0.6971490503227638, 0.6881316152659939, 0.6991631964024688, 0.6816772982528289, 0.679412315071879], [0.4527583797975271, 0.5246613299289445, 0.49772858084905824, 0.5353319491438812, 0.5206814319834353, 0.5431454775265059, 0.5142049996424884, 0.5136954911852687])

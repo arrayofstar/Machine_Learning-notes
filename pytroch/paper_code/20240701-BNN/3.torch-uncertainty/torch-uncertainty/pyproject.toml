@@ -1,0 +1,166 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "torch_uncertainty"
+version = "0.2.1"
+authors = [
+    { name = "ENSTA U2IS", email = "olivier.laurent@ensta-paris.fr" },
+    { name = "Adrien Lafage", email = "adrienlafage@outlook.com" },
+    { name = "Olivier Laurent", email = "olivier.laurent@ensta-paris.fr" },
+]
+description = "Uncertainty quantification library in PyTorch"
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = [
+    "bayesian-network",
+    "ensembles",
+    "neural-networks",
+    "predictive-uncertainty",
+    "pytorch",
+    "reliable-ai",
+    "trustworthy-machine-learning",
+    "uncertainty",
+    "uncertainty-quantification",
+]
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = [
+    "timm",
+    "lightning[pytorch-extra]",
+    "torchvision>=0.16",
+    "tensorboard",
+    "einops",
+    "torchinfo",
+    "scipy",
+    "huggingface-hub",
+    "scikit-learn",
+    "matplotlib==3.5.2",
+    "numpy<2",
+    "opencv-python",
+    "glest==0.0.1a0",
+]
+
+[project.optional-dependencies]
+image = ["scikit-image", "h5py"]
+tabular = ["pandas"]
+dev = [
+    "torch_uncertainty[image]",
+    "ruff==0.3.4",
+    "pytest-cov",
+    "pre-commit",
+    "pre-commit-hooks",
+]
+docs = [
+    "sphinx<6",
+    "tu_sphinx_theme",
+    "sphinx-copybutton",
+    "sphinx-gallery",
+    "sphinx-design",
+    "sphinx-codeautolink",
+]
+all = [
+    "torch_uncertainty[dev,docs,image,tabular]",
+    "laplace-torch"
+]
+
+[project.urls]
+homepage = "https://torch-uncertainty.github.io/"
+documentation = "https://torch-uncertainty.github.io/quickstart.html"
+repository = "https://github.com/ENSTA-U2IS-AI/torch-uncertainty.git"
+
+[tool.flit.module]
+name = "torch_uncertainty"
+
+[tool.ruff]
+line-length = 80
+target-version = "py310"
+lint.extend-select = [
+    "A",
+    "ARG", 
+    "B",
+    "C4",
+    "D",
+    "ERA",
+    "F",
+    "G",
+    "I",
+    "ISC",
+    "ICN",
+    "N",
+    "PERF",
+    "PIE",
+    "PTH",
+    "PYI",
+    "Q",
+    "RET",
+    "RUF",
+    "RSE",
+    "S",
+    "SIM",
+    "TCH",
+    "TID",
+    "TRY",
+    "UP",
+    "YTT",
+]
+lint.ignore = [
+    "ARG002",
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D107",
+    "D205",
+    "D206",
+    "ISC001",
+    "N818",
+    "N812",
+    "RUF012",
+    "S101",
+    "TRY003",
+]
+
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "__pycache__",
+    "auto_tutorials_source/*",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "venv",
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.coverage.run]
+branch = true
+include = ["*/torch-uncertainty/*"]
+omit = ["*/tests/*", "*/datasets/*"]
+
+[tool.coverage.report]
+exclude_lines = ["coverage: ignore", "raise NotImplementedError"]
+ignore_errors = true
