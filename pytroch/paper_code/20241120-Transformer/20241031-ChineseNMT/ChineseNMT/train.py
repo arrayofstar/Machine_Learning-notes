@@ -33,13 +33,17 @@ def train(train_data, dev_data, model, model_par, criterion, optimizer):
     for epoch in range(1, config.epoch_num + 1):
         # 模型训练
         model.train()
-        train_loss = run_epoch(train_data, model_par,
-                               MultiGPULossCompute(model.generator, criterion, config.device_id, optimizer))
+        # train_loss = run_epoch(train_data, model_par,
+        #                        MultiGPULossCompute(model.generator, criterion, config.device_id, optimizer))
+        train_loss = run_epoch(train_data, model,
+                               LossCompute(model.generator, criterion, optimizer))
         logging.info("Epoch: {}, loss: {}".format(epoch, train_loss))
         # 模型验证
         model.eval()
-        dev_loss = run_epoch(dev_data, model_par,
-                             MultiGPULossCompute(model.generator, criterion, config.device_id, None))
+        # dev_loss = run_epoch(dev_data, model_par,
+        #                      MultiGPULossCompute(model.generator, criterion, config.device_id, None))
+        dev_loss = run_epoch(dev_data, model,
+                             LossCompute(model.generator, criterion, None))
         bleu_score = evaluate(dev_data, model)
         logging.info('Epoch: {}, Dev loss: {}, Bleu Score: {}'.format(epoch, dev_loss, bleu_score))
 
@@ -67,8 +71,10 @@ class LossCompute:
 
     def __call__(self, x, y, norm):
         x = self.generator(x)
-        loss = self.criterion(x.contiguous().view(-1, x.size(-1)),
-                              y.contiguous().view(-1)) / norm
+        x = x.contiguous().view(-1, x.size(-1))
+        y = y.contiguous().view(-1)
+        loss = self.criterion(x, y) / norm
+
         loss.backward()
         if self.opt is not None:
             self.opt.step()
@@ -162,7 +168,7 @@ def evaluate(data, model, mode='dev', use_beam=True):
             trg.extend(cn_sent)
             res.extend(translation)
     if mode == 'test':
-        with open(config.output_path, "w") as fp:
+        with open(config.output_path, "w", encoding="utf-8") as fp:
             for i in range(len(trg)):
                 line = "idx:" + str(i) + trg[i] + '|||' + res[i] + '\n'
                 fp.write(line)
@@ -178,8 +184,10 @@ def test(data, model, criterion):
         model_par = torch.nn.DataParallel(model)
         model.eval()
         # 开始预测
-        test_loss = run_epoch(data, model_par,
-                              MultiGPULossCompute(model.generator, criterion, config.device_id, None))
+        # test_loss = run_epoch(data, model_par,
+        #                       MultiGPULossCompute(model.generator, criterion, config.device_id, None))
+        test_loss = run_epoch(data, model,
+                              LossCompute(model.generator, criterion, None))
         bleu_score = evaluate(data, model, 'test')
         logging.info('Test loss: {},  Bleu Score: {}'.format(test_loss, bleu_score))
 
@@ -188,15 +196,22 @@ def translate(src, model, use_beam=True):
     """用训练好的模型进行预测单句，打印模型翻译结果"""
     sp_chn = chinese_tokenizer_load()
     with torch.no_grad():
-        model.load_state_dict(torch.load(config.model_path))
+        try:
+            model.load_state_dict(torch.load(config.model_path))
+        except Exception as e:
+            print(f"未开始模型训练：{e}")
         model.eval()
         src_mask = (src != 0).unsqueeze(-2)
         if use_beam:
             decode_result, _ = beam_search(model, src, src_mask, config.max_len,
                                            config.padding_idx, config.bos_idx, config.eos_idx,
                                            config.beam_size, config.device)
-            decode_result = [h[0] for h in decode_result]
+            # decode_result = [h[0] for h in decode_result]
+            decode_result = [h for h in decode_result]
+            translation = [sp_chn.decode_ids(_s) for _s in decode_result]
+            for i in translation[0]:
+                print(i)
         else:
             decode_result = batch_greedy_decode(model, src, src_mask, max_len=config.max_len)
-        translation = [sp_chn.decode_ids(_s) for _s in decode_result]
-        print(translation[0])
+            translation = [sp_chn.decode_ids(_s) for _s in decode_result]
+            print(translation)

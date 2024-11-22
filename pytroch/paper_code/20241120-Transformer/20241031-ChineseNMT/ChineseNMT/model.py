@@ -310,7 +310,8 @@ def make_model(src_vocab, tgt_vocab, N=6, d_model=512, d_ff=2048, h=8, dropout=0
     ff = PositionwiseFeedForward(d_model, d_ff, dropout).to(DEVICE)
     # 实例化PositionalEncoding对象
     position = PositionalEncoding(d_model, dropout).to(DEVICE)
-    # 实例化Transformer模型对象
+    # 实例化
+    # 模型对象
     model = Transformer(
         Encoder(EncoderLayer(d_model, c(attn), c(ff), dropout).to(DEVICE), N).to(DEVICE),
         Decoder(DecoderLayer(d_model, c(attn), c(attn), c(ff), dropout).to(DEVICE), N).to(DEVICE),
@@ -383,3 +384,8 @@ def greedy_decode(model, src, src_mask, max_len=64, start_symbol=2, end_symbol=3
         ys = torch.cat([ys,
                         torch.ones(1, 1).type_as(src.data).fill_(next_word)], dim=1)
     return ys
+
+
+if __name__ == '__main__':
+
+    pass

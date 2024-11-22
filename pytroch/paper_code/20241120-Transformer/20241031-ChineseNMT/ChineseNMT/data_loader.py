@@ -93,9 +93,12 @@ class MTDataset(Dataset):
     def collate_fn(self, batch):
         src_text = [x[0] for x in batch]
         tgt_text = [x[1] for x in batch]
+        src_text, tgt_text = zip(*batch)  # 解压批次数据
 
         src_tokens = [[self.BOS] + self.sp_eng.EncodeAsIds(sent) + [self.EOS] for sent in src_text]
         tgt_tokens = [[self.BOS] + self.sp_chn.EncodeAsIds(sent) + [self.EOS] for sent in tgt_text]
+
+        test = [torch.LongTensor(np.array(l_)) for l_ in src_tokens]
 
         batch_input = pad_sequence([torch.LongTensor(np.array(l_)) for l_ in src_tokens],
                                    batch_first=True, padding_value=self.PAD)

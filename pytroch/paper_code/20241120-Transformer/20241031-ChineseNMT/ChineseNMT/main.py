@@ -112,13 +112,14 @@ def translate_example():
            "fully employed worker and his or her family out of poverty, and extend the earned-income tax credit " \
            "to childless workers."
     # tgt: 近期的政策对策很明确：把最低工资提升到足以一个全职工人及其家庭免于贫困的水平，扩大对无子女劳动者的工资所得税减免。
-    one_sentence_translate(sent, beam_search=True)
+    one_sentence_translate(sent, beam_search=False)
 
 
 if __name__ == "__main__":
     import os
-    # os.environ['CUDA_VISIBLE_DEVICES'] = '2, 3'
+    # os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+    # os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
     import warnings
     warnings.filterwarnings('ignore')
-    # run()
-    translate_example()
+    run()  # mf-训练的时候运行这个
+    translate_example()  # mf-预测的时候运行这个
