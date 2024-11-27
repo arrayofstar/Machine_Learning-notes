@@ -5,6 +5,7 @@ Language: 简体中文 | [English](https://github.com/hemingkx/ChineseNMT/blob/m
 mf：
 github-link：https://github.com/hemingkx/ChineseNMT?tab=readme-ov-file
 zhihu-link：https://zhuanlan.zhihu.com/p/347061440
+data文件夹中的数据，需要去原始github仓库进行获取。
 
 基于transformer的英译中翻译模型🤗。
 

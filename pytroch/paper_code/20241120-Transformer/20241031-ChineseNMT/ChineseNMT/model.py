@@ -280,7 +280,7 @@ class Transformer(nn.Module):
         self.generator = generator
 
     def encode(self, src, src_mask):
-        return self.encoder(self.src_embed(src), src_mask)
+            return self.encoder(self.src_embed(src), src_mask)
 
     def decode(self, memory, src_mask, tgt, tgt_mask):
         return self.decoder(self.tgt_embed(tgt), memory, src_mask, tgt_mask)
